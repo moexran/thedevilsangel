@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
 <title>The Devil's Angel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -67,6 +68,8 @@ h2{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--gold);letter-spacing:.1em}
 .card.wide{grid-template-columns:280px 1fr;border-left:4px solid var(--gold)}
 .pic{aspect-ratio:2/3;background:linear-gradient(160deg,#3a0a0e,#0a0303);border:2px solid var(--gold);display:grid;place-items:center;font:900 4rem 'Cinzel';color:var(--gold);text-align:center;overflow:hidden;position:relative}
 .pic img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.pic .fb{text-align:center}
+.gal .ph .fb{position:absolute;inset:0;display:grid;place-items:center}
 .pic small{font-size:.7rem;letter-spacing:.2em;color:var(--mute);display:block}
 .info h3{font-size:1.7rem;color:var(--gold2);letter-spacing:.06em}
 .role{color:var(--red2);font-style:italic;margin-bottom:.8rem}
@@ -152,7 +155,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 </div>
 
 <section id="lore">
-  <div class="sh"><h2>THE UNDERWORLD</h2><p>Three crowns. One corrupted law. No clean hands.</p></div>
+  <div class="sh"><h2>THE UNDERWORLD</h2><p>Five crowns. One corrupted law. No clean hands.</p></div>
   <div class="box main">
     <h3>The World of The Devil's Angel</h3>
     <div class="scroll"><p>Write your main description here: the world, the rules of the underworld, how the families are tied together, and what the story is really about. This is the big picture that readers should understand before they meet anyone.</p>
@@ -162,6 +165,8 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
     <div class="box"><h3>The Allard Family</h3><div class="scroll"><p>Paris. Old money, velvet rooms and quiet executions. Edit this box with your lore.</p></div></div>
     <div class="box"><h3>The Borghese Family</h3><div class="scroll"><p>Milan. Blood, faith and loyalty carved into marble. Edit this box with your lore.</p></div></div>
     <div class="box"><h3>The Romanov Family</h3><div class="scroll"><p>Moscow. Cold winters, colder tempers, and debts that never expire. Edit this box with your lore.</p></div></div>
+    <div class="box"><h3>The Montanari Family</h3><div class="scroll"><p>Sicily. Old island code, old grudges, and a silence that speaks louder than orders. Edit this box with your lore.</p></div></div>
+    <div class="box"><h3>The Winata Family</h3><div class="scroll"><p>Indonesia. Quiet power, deep roots and reach that crosses oceans. Edit this box with your lore.</p></div></div>
     <div class="box"><h3>The Lawyer</h3><div class="scroll"><p>London. A man who sells the law by the hour and loyalty by the highest bid. Edit this box with your lore.</p></div></div>
   </div>
 </section>
@@ -169,7 +174,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 <section id="novel">
   <div class="sh"><h2>THE ORIGINAL NOVEL</h2><p>Where the fall begins.</p></div>
   <article class="card wide">
-    <div class="pic"><!-- Add cover: <img src="cover.jpg" alt="Cover"> --><div>TDA<small>COVER HERE</small></div></div>
+    <div class="pic" id="cover"></div>
     <div class="info">
       <h3>The Devil's Angel</h3>
       <div class="role">Book One</div>
@@ -181,14 +186,18 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 </section>
 
 <section id="map">
-  <div class="sh"><h2>THE MAP OF SIN</h2><p>Four cities. One web of debts. <b>Tap a pin.</b></p></div>
+  <div class="sh"><h2>THE MAP OF SIN</h2><p>Six places. One web of debts. <b>Tap a pin.</b></p></div>
   <div class="mapwrap">
-    <svg class="map" viewBox="0 0 800 520" role="img" aria-label="Map of Europe with Paris, Milan, Moscow and London marked">
+    <svg class="map" viewBox="0 0 1000 520" role="img" aria-label="Map with Paris, Milan, Sicily, Moscow, London and Jakarta marked">
       <g class="land">
         <path d="M190 300L200 270L250 262L290 235L320 225L345 215L380 205L420 190L440 160L480 150L520 110L600 80L700 70L780 90L780 330L700 340L640 320L600 340L560 330L520 300L480 320L470 350L440 330L400 310L380 300L330 310L290 330L250 340L200 345Z"/>
         <path d="M420 300L460 310L480 360L510 400L490 410L450 380L425 335Z"/>
         <path d="M300 150L330 140L345 175L350 200L320 215L295 205L310 180Z"/>
         <path d="M430 150L460 60L520 30L580 40L560 90L520 100L490 150Z"/>
+        <path d="M452 428L488 418L498 430L482 442L458 438Z"/>
+        <path d="M770 350L800 360L850 410L862 432L836 426L790 390Z"/>
+        <path d="M848 450L900 440L955 448L948 460L890 460L852 458Z"/>
+        <path d="M890 380L920 365L950 385L955 420L925 430L895 415Z"/>
       </g>
       <g id="routes"></g><g id="pins"></g>
     </svg>
@@ -230,7 +239,7 @@ const CHARACTERS=[
 {name:"Cyrill Allard",role:"Head of the Allard Family",fam:"Allard",img:"https://file.garden/ad35P9foF0kAW7I8/cyrille.jpg",tags:["FRANCE","BOSS","CALCULATING"],link:"https://janitorai.com/characters/bd420164-b000-40ca-a09a-cd57f43116d5_character-cyrille-allard",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
 {name:"Lucas Alderidge",role:"Right-Hand-Man of the Allard Family",fam:"Allard",img:"https://file.garden/ad35P9foF0kAW7I8/lucas.jpg",tags:["FRANCE","RIGHTHANDMAN","COLD"],link:"https://janitorai.com/characters/7413d40d-6075-496d-b9bc-c0de1e4e9731_character-lucas-alderidge",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
 {name:"Astin Allard",role:"Shame of the Allard Family",fam:"Allard",img:"https://file.garden/ad35P9foF0kAW7I8/astin.png",tags:["FRANCE","LOANSHARK","MANIPULATIVE"],link:"https://janitorai.com/characters/283913e3-af75-4afc-9ffc-640ae2b6bf94_character-astin-allard",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
-{name:"Shawn 'Shaw' Sinclair",role:"Enforcer of the Allard Family",fam:"Allard",img:""https://file.garden/ad35P9foF0kAW7I8/shawn.jpg,tags:["FRANCE","ENFORCER","OBSESSIVE"],link:"https://janitorai.com/characters/45f701f2-db69-48ab-bcc7-031ac0b95c19_character-shawn-shaw-sinclair",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
+{name:"Shawn 'Shaw' Sinclair",role:"Enforcer of the Allard Family",fam:"Allard",img:"https://file.garden/ad35P9foF0kAW7I8/shawn.jpg",tags:["FRANCE","ENFORCER","OBSESSIVE"],link:"https://janitorai.com/characters/45f701f2-db69-48ab-bcc7-031ac0b95c19_character-shawn-shaw-sinclair",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
 {name:"Lucio Borghese",role:"Head of the Borghese Family",fam:"Borghese",img:"https://file.garden/ad35P9foF0kAW7I8/lucio.jpg",tags:["ITALY","BOSS","CUNNING"],link:"https://janitorai.com/characters/8d07f8d2-bc3f-45e3-add5-68bb456210aa_character-lucio-borghese",desc:"Placeholder: write his lore here. Loyalty, faith and a temper that the family keeps on a short leash."},
 {name:"Santana Borghese",role:"Future of the Borghese Family",fam:"Borghese",img:"https://file.garden/ad35P9foF0kAW7I8/santana.jpg",tags:["ITALY","FUTURE","IMPULSIVE"],link:"#",desc:"Placeholder: write his lore here. Loyalty, faith and a temper that the family keeps on a short leash."},
 {name:"Vladimir Romanov",role:"Pakhan of the Romanov Family",fam:"Romanov",img:"https://file.garden/ad35P9foF0kAW7I8/vladimir.jpg",tags:["RUSSIA","BOSS","RUTHLESS"],link:"https://janitorai.com/characters/f16b2f1d-5585-4617-8d1a-90ef75f7c8e2_character-vladimir-romanov",desc:"Placeholder: write his lore here. Every debt is collected eventually, one way or another."},
@@ -242,8 +251,11 @@ const CITIES=[
 {n:"Paris",c:"FRANCE",x:360,y:250,d:"Seat of the Allard family. Add what happens here."},
 {n:"Milan",c:"ITALY",x:432,y:296,d:"Seat of the Borghese family. Add what happens here."},
 {n:"Moscow",c:"RUSSIA",x:690,y:150,d:"Seat of the Romanov family. Add what happens here."},
+{n:"Sicily",c:"ITALY",x:470,y:430,d:"Seat of the Montanari family. Add what happens here."},
+{n:"Jakarta",c:"INDONESIA",x:872,y:450,d:"Seat of the Winata family. Add what happens here."},
 {n:"London",c:"UNITED KINGDOM",x:336,y:204,d:"Where the corrupt lawyer keeps his office. Add what happens here."}
 ];
+const NOVEL_COVER=""; // paste your file.garden link for the book cover here
 const GALLERY=[
 {t:"Paris, after midnight",img:""},{t:"The Allard estate",img:""},{t:"Milan docks",img:""},
 {t:"Moscow in winter",img:""},{t:"The lawyer's office",img:""},{t:"Fan art",img:""}
@@ -255,13 +267,18 @@ const TRACKS=[
 ];
 /* ========================================== */
 const $=s=>document.querySelector(s);
-const pic=(img,t)=>`<div class="pic">${img?`<img src="${img}" alt="${t}">`:`<div>${t.split(" ").map(w=>w[0]).join("")}<small>PHOTO HERE</small></div>`}</div>`;
+const FB=(t,l)=>`<div class="fb">${l}<small>${t}</small></div>`;
+const IMG=(src,alt)=>`<img src="${String(src).trim()}" alt="${alt}" referrerpolicy="no-referrer" loading="lazy" decoding="async" onload="this.parentNode.querySelector('.fb').style.display='none'" onerror="this.remove()">`;
+const pic=(img,t)=>`<div class="pic">${FB("PHOTO HERE",t.split(" ").map(w=>w[0]).join(""))}${img?IMG(img,t):""}</div>`;
 
 // characters + filters
-const fams=["All",...new Set(CHARACTERS.map(c=>c.fam))];
+const FAMILIES=["Allard","Borghese","Montanari","Romanov","Winata","London"];
+const fams=["All",...new Set([...FAMILIES,...CHARACTERS.map(c=>c.fam)])];
 $("#filters").innerHTML=fams.map((f,i)=>`<button class="${i?"":"on"}" data-f="${f}">${f.toUpperCase()}</button>`).join("");
 function drawChars(f){
- $("#chars").innerHTML=CHARACTERS.filter(c=>f=="All"||c.fam==f).map(c=>`
+ const list=CHARACTERS.filter(c=>f=="All"||c.fam==f);
+ if(!list.length){$("#chars").innerHTML=`<p class="warn" style="text-align:center">The ${f} family's characters are coming soon.</p>`;return}
+ $("#chars").innerHTML=list.map(c=>`
  <article class="card">${pic(c.img,c.name)}<div class="info"><h3>${c.name}</h3><div class="role">${c.role}</div>
  <div class="tags">${c.tags.map((t,i)=>`<span class="tag ${i%3==2?"r":""}">${t}</span>`).join("")}</div>
  <p>${c.desc}</p><a class="btn" href="${c.link}" target="_blank" rel="noopener">CHAT WITH ${c.name.split(" ")[0].toUpperCase()}</a></div></article>`).join("");
@@ -279,8 +296,9 @@ function city(i){const c=CITIES[i];
 document.querySelectorAll(".pin").forEach(p=>{p.onclick=()=>city(p.dataset.i);p.onkeydown=e=>{if(e.key=="Enter")city(p.dataset.i)}});
 city(0);
 
+$("#cover").innerHTML=FB("COVER HERE","TDA")+(NOVEL_COVER?IMG(NOVEL_COVER,"The Devil's Angel cover"):"");
 // gallery
-$("#gal").innerHTML=GALLERY.map(g=>`<figure><div class="ph">${g.img?`<img src="${g.img}" alt="${g.t}">`:"IMAGE HERE"}</div><figcaption>${g.t}</figcaption></figure>`).join("");
+$("#gal").innerHTML=GALLERY.map(g=>`<figure><div class="ph"><span class="fb">IMAGE HERE</span>${g.img?IMG(g.img,g.t):""}</div><figcaption>${g.t}</figcaption></figure>`).join("");
 $("#gl").onclick=()=>$("#gal").scrollBy({left:-340,behavior:"smooth"});
 $("#gr").onclick=()=>$("#gal").scrollBy({left:340,behavior:"smooth"});
 
