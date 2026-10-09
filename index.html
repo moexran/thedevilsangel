@@ -50,18 +50,16 @@ h2{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--gold);letter-spacing:.1em}
 .box.main h3{font-size:1.6rem;margin-bottom:1rem}
 .box.main p{font-size:1.15rem;margin-bottom:.9rem;max-width:80ch}
 .box.main p:last-child{margin-bottom:0}
-.scroll,.info p{max-height:170px;overflow-y:auto;padding-right:.7rem;scrollbar-width:thin;scrollbar-color:var(--red) transparent}
-.scroll::-webkit-scrollbar,.info p::-webkit-scrollbar{width:6px}
-.scroll::-webkit-scrollbar-thumb,.info p::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
-.box.main .scroll{max-height:260px}
-.box .scroll{max-height:150px}
-.box.main .scroll{max-height:260px}
-.scroll,.info p,.lore .box p{overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--red) transparent;padding-right:.6rem}
-.scroll{max-height:15rem}
-.info p{max-height:11rem}
-.lore .box p{max-height:9rem}
-.scroll::-webkit-scrollbar,.info p::-webkit-scrollbar,.lore .box p::-webkit-scrollbar{width:6px}
-.scroll::-webkit-scrollbar-thumb,.info p::-webkit-scrollbar-thumb,.lore .box p::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
+/* scrollable description containers: ONE rule set for every description on the site */
+.scroll{max-height:15rem;overflow-y:auto;padding-right:.7rem;scrollbar-width:thin;scrollbar-color:var(--red) transparent}
+.scroll::-webkit-scrollbar{width:6px}
+.scroll::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
+.scroll p{margin-bottom:.9rem}
+.scroll p:last-child{margin-bottom:0}
+.box.main .scroll{max-height:18rem}   /* main world description */
+.lore .box .scroll{max-height:10rem}  /* family boxes */
+.info .scroll{max-height:11rem;margin-bottom:1.2rem} /* character cards + novel blurb */
+#cityInfo .scroll{max-height:16rem}   /* map city description */
 /* feature card (novel + characters) */
 .card{display:grid;grid-template-columns:240px 1fr;gap:2rem;padding:1.8rem;margin-bottom:2rem;background:linear-gradient(160deg,var(--panel),#080404);border:1px solid var(--line);position:relative;transition:.3s}
 .card:hover{border-color:var(--red2);box-shadow:0 0 30px rgba(179,18,27,.25)}
@@ -71,12 +69,13 @@ h2{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--gold);letter-spacing:.1em}
 .pic .fb{text-align:center}
 .gal .ph .fb{position:absolute;inset:0;display:grid;place-items:center}
 .pic small{font-size:.7rem;letter-spacing:.2em;color:var(--mute);display:block}
+.info{min-width:0}
 .info h3{font-size:1.7rem;color:var(--gold2);letter-spacing:.06em}
 .role{color:var(--red2);font-style:italic;margin-bottom:.8rem}
 .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin:.6rem 0 1rem}
 .tag{font-size:.65rem;letter-spacing:.12em;padding:.25rem .7rem;border:1px solid var(--gold);color:var(--gold);background:rgba(212,168,75,.07)}
 .tag.r{border-color:var(--red2);color:#ff7a80;background:rgba(224,37,47,.1)}
-.info p{margin-bottom:1.2rem;max-width:62ch}
+.info .scroll p{max-width:62ch}
 .filters{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-bottom:2.2rem}
 .filters button{font:700 .72rem 'Cinzel';letter-spacing:.14em;padding:.55rem 1.1rem;background:none;color:var(--mute);border:1px solid var(--line);cursor:pointer;transition:.25s}
 .filters button.on,.filters button:hover{color:var(--gold2);background:var(--red);border-color:var(--gold)}
@@ -128,7 +127,7 @@ footer p{color:var(--mute);font-size:.95rem;margin-top:.7rem}
 #burger{display:block}
 nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#050303;border-bottom:1px solid var(--line);display:none}
 nav.open{display:flex}nav a{padding:1rem 6vw}
-.card,.card.wide{grid-template-columns:1fr}.pic{max-width:240px;margin:auto}
+.card,.card.wide{grid-template-columns:minmax(0,1fr)}.pic{width:100%;max-width:240px;margin:0 auto}
 .mapwrap{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -162,12 +161,47 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
     <p>Add a second paragraph if you need one. Keep the smaller boxes below for each family's own lore.</p></div>
   </div>
   <div class="lore">
-    <div class="box"><h3>The Allard Family</h3><div class="scroll"><p>Paris. Old money, velvet rooms and quiet executions. Edit this box with your lore.</p></div></div>
-    <div class="box"><h3>The Borghese Family</h3><div class="scroll"><p>Milan. Blood, faith and loyalty carved into marble. Edit this box with your lore.</p></div></div>
-    <div class="box"><h3>The Romanov Family</h3><div class="scroll"><p>Moscow. Cold winters, colder tempers, and debts that never expire. Edit this box with your lore.</p></div></div>
-    <div class="box"><h3>The Montanari Family</h3><div class="scroll"><p>Sicily. Old island code, old grudges, and a silence that speaks louder than orders. Edit this box with your lore.</p></div></div>
-    <div class="box"><h3>The Winata Family</h3><div class="scroll"><p>Indonesia. Quiet power, deep roots and reach that crosses oceans. Edit this box with your lore.</p></div></div>
-    <div class="box"><h3>The Lawyer</h3><div class="scroll"><p>London. A man who sells the law by the hour and loyalty by the highest bid. Edit this box with your lore.</p></div></div>
+    <div class="box"><h3>The Allard Family</h3><div class="scroll"><p><b>Paris.</b> Founded in the 1930s by Louis Allard, the family began as a modest criminal operation dealing in smuggling and illegal gambling. Over the decades, it evolved into one of France's most formidable syndicates, maintaining a discreet but persistent influence under François Allard before reaching unprecedented heights under his second son, Cyrille.</p>
+<p>Today, the Allards are a dynasty of extraordinary wealth and carefully cultivated prestige. Their public empire spans fashion, automotive parts, and logistics; their private one extends into narcotics, arms trafficking, assassination, cybercrime, and money laundering. Billions flow through a labyrinth of shell companies and offshore accounts, concealing the true scale of their influence from the very society that helps sustain it.</p>
+<p><i>Yet the greatest threat to the Allard empire may not come from a rival family. It comes from within.</i></p>
+<p>François's decision to name Cyrille his successor instead of his firstborn, Astin, fractured the family at its core. Astin considers the inheritance a birthright stolen from him and is determined to reclaim his position. Cyrille, meanwhile, is caught between his duty to his promise to Francois and his unwillingness to destroy his own brother. But affection cannot erase ambition, and blood does not guarantee loyalty.</p>
+<p>For the Allards, reputation is everything. Loyalty is expected. Secrecy is absolute. Anyone who threatens the family risks becoming a cautionary tale.</p></div></div>
+
+    <div class="box"><h3>The Borghese Family</h3><div class="scroll"><p><b>Milan.</b> Wealth, ruthlessness, and an appetite for victory define the Borghese family. Led by Lucio Borghese, this Italian criminal dynasty has built its empire on weapons, narcotics, extortion, and the kind of intimidation that makes even powerful men reconsider their alliances.</p>
+<p>Unlike the Allards, who prefer to conceal the machinery of their empire behind legitimate enterprise, the Borghese are far less interested in appearing innocent. They operate openly within Milan's criminal underworld, collecting protection money and enforcing their authority through fear. Their methods are cunning, vicious, and often deliberately cruel. To Lucio, victory matters more than the rules—<i>and he has little patience for those who mistake restraint for strength.</i></p>
+<p>His ambitions extend beyond Milan. By supporting Astin Allard's attempt to overthrow Cyrille, Lucio has positioned himself at the heart of the Allard succession crisis. Whether driven by opportunity, revenge, or the prospect of a weakened rival, his interference threatens to turn a family dispute into an international power struggle.</p>
+<p>Despite their brutality, the Borghese maintain a strict code: women and children are not to be harmed, nor are they to be knowingly placed in harm's way. Lucio's contempt for human trafficking is one of the few boundaries he refuses to cross.</p>
+<p><i>It is a peculiar morality, perhaps, but even a beast has rules of its own.</i></p>
+</div></div>
+
+    <div class="box"><h3>The Romanov Family</h3><div class="scroll"><p><b>Moscow.</b> Little is known about the origins of the Romanov criminal empire. Rumors suggest its rise began during the Soviet era, when secrecy was currency and violence could determine the fate of nations. Whatever the truth, the family has since established itself as one of the most feared forces in the Russian underworld.</p>
+<p>Their operations span weapons, narcotics, and human trafficking, supported by an organization whose internal workings remain largely concealed. The Romanovs do not seek public approval, nor do they waste effort cultivating a respectable image. Their reputation precedes them, and their brutality ensures that few are willing to test whether the stories are exaggerated.</p>
+<p>At the head of the family stands Vladimir Romanov, the pakhan—a man whose life is obscured by rumor, whose motives remain difficult to discern, and whose capacity for violence has become the stuff of whispered legend. Some claim he committed his first murder before experiencing his first kiss. Whether truth or myth, the story captures what makes him so unsettling: the sense that whatever humanity he possesses has always existed alongside something far more dangerous.</p>
+<p>Yet Vladimir's relationship with the Allards defies expectation. He tolerates their presence, maintains an unusual rapport with Cyrille, and has implicitly recognized him as the legitimate heir to the Allard empire. In a world where alliances are rarely unconditional, his support is significant—even if no one can be certain what it will ultimately cost.</p>
+<p><i>The monster has no need to explain himself. The world has already learned to fear the silence.,/i></p>
+</div></div>
+
+    <div class="box"><h3>The Montanari Family</h3><div class="scroll"><p><b>Sicily.</b> The Montanari family is an empire of quiet authority, disciplined ambition, and calculated restraint. Under Mateo Montanari, its operations flourish away from public scrutiny, sustained by illegal enterprises, online gambling, and casinos that turn chance into a remarkably profitable business.</p>
+<p>Mateo is not a man who mistakes violence for power. Cold, precise, and fiercely controlled, he rules through efficiency rather than spectacle. He values loyalty, despises unnecessary cruelty, and considers emotional impulsiveness a liability. Every decision serves a purpose; every action carries a consequence.</p>
+<p>The Montanari have little interest in the Allard succession crisis. Cyrille and Astin may fight over their father's legacy, and Lucio Borghese may indulge himself in the chaos, but Mateo has no intention of becoming another man's pawn. His neutrality, however, is not an oath of peace. He simply prefers to wait until the outcome becomes worth his attention.</p>
+<p>If the balance of power shifts in a way that benefits him, Mateo will not hesitate to act. He has no need to start a war when he can profit from the moment it ends.</p>
+<p><i>The master does not chase opportunities. He lets them come within reach.</i></p>
+</div></div>
+
+    <div class="box"><h3>The Winata Family</h3><div class="scroll"><p><b>Jakarta.</b> The Winata family is the embodiment of respectable power. A wealthy dynasty of entrepreneurs, businessmen, and politicians, they have spent generations building a reputation that is as immaculate as it is useful. Their name commands respect in corporate boardrooms and government corridors alike, and their influence reaches into the institutions that shape the nation.</p><
+<p>At the center of the dynasty stands Edward Winata, a popular and beloved politician whose public image embodies everything the family wishes the world to believe. Charismatic and influential, he represents stability, ambition, and national progress. Few would suspect that the empire behind his success is deeply entangled with organized crime and systemic corruption.</p>
+<p>Unlike families that rule through visible violence, the Winatas understand the power of institutions. Their weapons are political favors, compromised loyalties, financial leverage, and the quiet manipulation of systems meant to serve the public. They do not merely seek wealth; they seek the kind of influence that makes wealth almost irrelevant. When business, government, and criminal interests become inseparable, opposition becomes extraordinarily difficult.</p>
+<p>Their greatest strength is also their greatest disguise. The Winatas have cultivated a world in which their legitimacy is rarely questioned, their enemies struggle to find a way in, and the machinery of accountability can be made to work in their favor.</p>
+<p><i>Some empires are built by conquering the throne. Others are built by becoming the throne.</i></p>
+</div></div>
+
+    <div class="box"><h3>The Lawyer</h3><div class="scroll"><p><b>London.</b> Unlike Paris, Milan, Moscow, or Jakarta, London has no single family that can claim undisputed dominion over its underworld. Its power structure is fragmented, its loyalties fluid, and its most influential players often operate far beyond the reach of conventional authority.</p>
+<p>London is where the worlds of crime, politics, law, and private security intersect. Here, power belongs to those who know which doors to open, which secrets to bury, and which people can be bought. Alliances are temporary, loyalties negotiable, and the difference between the law and those who exploit it is often a matter of perspective.</p>
+<p>Among its many players is William, a corrupt lawyer whose professional allegiance extends only as far as his next lucrative arrangement. He serves the powerful, negotiates with the criminal, and bends the law for whoever can afford his services. In William's world, justice is not blind. It simply has a price.</p>
+<p>Then there is Arthur, a former Special Air Service operative who has traded military service for a different kind of battlefield. Now employed as a bodyguard to a prominent political family, he operates in the dangerous space between public respectability and private vulnerability. Where William profits from compromised principles, Arthur survives by discipline, vigilance, and the knowledge that some threats cannot be settled in a courtroom.</p>
+<p>Neither man rules London. Both understand how its shadows work.</p>
+</div></div>
+<p><i>In a city built on institutions, the most dangerous people are often those who know exactly how to use them.</i></p>
   </div>
 </section>
 
@@ -179,7 +213,10 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
       <h3>The Devil's Angel</h3>
       <div class="role">Book One</div>
       <div class="tags"><span class="tag">MAFIA</span><span class="tag">DARK ROMANCE</span><span class="tag r">DEAD DOVE</span><span class="tag">ORGANIZED CRIME</span><span class="tag r">HURT/COMFORT</span></div>
-      <p>Write the novel's blurb here. Who is at the center of it? What do they stand to lose? End on a hook that makes readers click the button below.</p>
+      <div class="scroll">
+        <p>When ambitious law student Evelyn Moore saved a bleeding stranger from a lethal assassination attempt, she didn't just save a life—she invoked the obsessive devotion of Cyrille Allard, the ruthless, enigmatic kingpin of a massive mafia empire. Swept into a whirlwind of dark desire, lethal deception, and bloody power struggles, Evelyn is dragged deep into a ruthless shadowy domain where loyalty is dead and betrayal waits in every breath.</p>
+<p>With a vengeful rival brother waging all-out war for control and the crosshairs of a criminal underworld closing in, love becomes their most dangerous weapon. To survive the darkness, they must defy the world—<b>or be completely torn apart by the very shadows that bind them.</b></p>
+      </div>
       <a class="btn" href="#" target="_blank" rel="noopener">READ NOW</a>
     </div>
   </article>
@@ -229,7 +266,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 <footer>
   <a class="logo" href="#home">THE DEVIL'S ANGEL</a>
   <div class="soc"><a href="#">WATTPAD</a><a href="#">DISCORD</a><a href="#">JAI</a></div>
-  <p>&copy; <span id="yr"></span> The Devil's Angel. All characters and stories belong to @Moexran. 18+ themes of crime and violence.</p>
+  <p>&copy; 2024 The Devil's Angel. All characters and stories belong to @Moexran. 18+ themes of crime and violence.</p>
 </footer>
 <button id="top" aria-label="Back to top">&#9650;</button>
 
@@ -248,14 +285,14 @@ const CHARACTERS=[
 {name:"Arthur Phillips",role:"S.A.S. Bodyguard",fam:"London",img:"https://file.garden/ad35P9foF0kAW7I8/arthur.jpg",tags:["UK","BODYGUARD","PROTECTIVE"],link:"https://janitorai.com/characters/eba1f797-c048-400e-8e02-dea5a6fcdef5_character-arthur-phillips",desc:"Placeholder: write his lore here. He keeps three families out of prison and himself out of reach."},
 ];
 const CITIES=[
-{n:"Paris",c:"FRANCE",x:360,y:250,d:"Seat of the Allard family. Add what happens here."},
-{n:"Milan",c:"ITALY",x:432,y:296,d:"Seat of the Borghese family. Add what happens here."},
-{n:"Moscow",c:"RUSSIA",x:690,y:150,d:"Seat of the Romanov family. Add what happens here."},
-{n:"Sicily",c:"ITALY",x:470,y:430,d:"Seat of the Montanari family. Add what happens here."},
-{n:"Jakarta",c:"INDONESIA",x:872,y:450,d:"Seat of the Winata family. Add what happens here."},
-{n:"London",c:"UNITED KINGDOM",x:336,y:204,d:"Where the corrupt lawyer keeps his office. Add what happens here."}
+{n:"Paris",c:"FRANCE",x:360,y:250,d:"<b>The Devil's Domain.</b> Paris is a city that has mastered the art of seduction. Its golden boulevards, grand architecture, haute couture houses, and candlelit restaurants make it a symbol of beauty, romance, and refinement. Here, everything appears touched by elegance, and even the darkest secrets wear the finest suits.\n\nBut beneath the city's enchanting facade lies an empire built on blood, money, and absolute discretion. The Allard family has woven itself into the very fabric of Parisian society, concealing its criminal dominion behind legitimate businesses and an untouchable reputation. And at its center stands a man whose name commands both reverence and fear.\n\n<b><i>In Paris, the devil does not need to hide. He only needs to look respectable.</i></b>"},
+{n:"Milan",c:"ITALY",x:432,y:296,d:"<b>The Beast's Kingdom.</b> Milan is a city of ambition, where fashion dictates influence, fortunes change hands behind closed doors, and power is measured in more than money. Beneath its immaculate storefronts and glittering skyline thrives a world where loyalty is expensive, betrayal is inevitable, and weakness is an invitation to be devoured.\n\nThe Borghese family has made this city its hunting ground. Ruthless, cunning, and unashamed of its brutality, the family rules through intimidation, illicit trade, and a willingness to cross lines others would never dare approach. In Milan, cruelty is a weapon, wealth is leverage, and mercy is a privilege reserved for those deemed worthy of it.\n\n<b><i>The beast does not ask for permission. It takes what it wants.</i></b>"},
+{n:"Moscow",c:"RUSSIA",x:690,y:150,d:"<b>The Monster's Playground.</b> Moscow is a city of contradictions: imperial grandeur and Soviet ghosts, glittering wealth and unforgiving winters, monumental architecture and streets that have witnessed the rise and fall of empires. Power here is rarely gentle. It is inherited, seized, defended, and paid for in blood.\n\nThe Romanov family operates in the spaces where fear becomes obedience. Its reach extends through weapons, narcotics, and human trafficking, while its true influence remains obscured by layers of secrecy. Few know the full extent of its empire, and fewer still are foolish enough to investigate. Vladimir Romanov, the family's pakhan, is a man surrounded by rumors and unanswered questions. Even among monsters, he is an unsettling presence.\n\n<b><i>In Moscow, people fear what they can see. The wise fear what they cannot.</i></b>"},
+{n:"Sicily",c:"ITALY",x:470,y:430,d:"<b>The Master's Territory.</b> Sicily is a land shaped by old blood and older traditions. Sun-drenched coastlines, ancient stone streets, family estates, and quiet Mediterranean villages conceal a history in which loyalty is sacred and power is rarely displayed without purpose. Here, the past never truly dies. It simply learns to wait.\n\nThe Montanari family understands this better than most. Its empire thrives away from the public eye, sustained by discreet enterprises, underground gambling, and casinos where fortunes are won and lost beneath carefully controlled smiles. Under Mateo Montanari, order takes precedence over spectacle, and every move is deliberate. He has little interest in other families' wars—but neutrality should never be mistaken for weakness.\n\n<b><i>The master does not need to raise his voice when the entire room already knows to listen.</i></b>"},
+{n:"Jakarta",c:"INDONESIA",x:872,y:450,d:"<b>The Politician's Empire.</b> Jakarta never sleeps. Beneath its towering skyscrapers, bustling streets, and glittering corporate districts, ambition moves at a relentless pace. Deals are struck over expensive dinners, fortunes are built in boardrooms, and influence travels through corridors most people will never enter. Here, power does not always carry a weapon. Sometimes, it carries a briefcase and a government title.\n\nThe Winata family has perfected the art of respectable corruption. Celebrated as a dynasty of successful entrepreneurs and influential public figures, they have cultivated an immaculate reputation while quietly entrenching themselves in the machinery of government. Their influence reaches far beyond business, blurring the line between political authority and private empire. And when an entire system has been bent to serve you, who is left to hold you accountable?\n\n<b><i>In Jakarta, the most dangerous man in the room might be the one everyone voted for.</i></b>"},
+{n:"London",c:"UNITED KINGDOM",x:336,y:204,d:"<b>The City of Shadows.</b> London is a city of polished institutions, ancient traditions, and carefully maintained appearances. Behind the imposing courthouses, exclusive private clubs, and halls of political power, influence changes hands with a handshake and a signature. The law promises order, the government promises stability, and the city's elite promise that everything is under control.\n\nBut London belongs to no single criminal dynasty. Its underworld is a shifting network of mercenaries, compromised officials, powerful patrons, and men who have learned to profit from the sins of others. Here, a corrupt lawyer can make a monster untouchable, while a former soldier can become the last line of defense between a powerful family and its enemies. In a city where everyone has something to conceal, allegiance is rarely permanent.\n\n<b><i>Some people live in the light. Others decide what the light is allowed to reveal.</i></b>"}
 ];
-const NOVEL_COVER=""; // paste your file.garden link for the book cover here
+const NOVEL_COVER="https://file.garden/ad35P9foF0kAW7I8/TheDevilsAngel.jpg"; // link for the book cover here
 const GALLERY=[
 {t:"Paris, after midnight",img:""},{t:"The Allard estate",img:""},{t:"Milan docks",img:""},
 {t:"Moscow in winter",img:""},{t:"The lawyer's office",img:""},{t:"Fan art",img:""}
@@ -267,6 +304,11 @@ const TRACKS=[
 ];
 /* ========================================== */
 const $=s=>document.querySelector(s);
+// turns a description into <p> paragraphs. Accepts: an array ["para 1","para 2"],
+// a string with a blank line between paragraphs ("one\n\ntwo"), or a string that already contains <p> tags.
+const P=d=>{if(Array.isArray(d))return d.map(x=>`<p>${x}</p>`).join("");
+ d=String(d).trim();if(/<p[\s>]/i.test(d))return d;
+ return d.split(/\n\s*\n/).map(x=>`<p>${x.trim()}</p>`).join("")};
 const FB=(t,l)=>`<div class="fb">${l}<small>${t}</small></div>`;
 const IMG=(src,alt)=>`<img src="${String(src).trim()}" alt="${alt}" referrerpolicy="no-referrer" loading="lazy" decoding="async" onload="this.parentNode.querySelector('.fb').style.display='none'" onerror="this.remove()">`;
 const pic=(img,t)=>`<div class="pic">${FB("PHOTO HERE",t.split(" ").map(w=>w[0]).join(""))}${img?IMG(img,t):""}</div>`;
@@ -281,7 +323,7 @@ function drawChars(f){
  $("#chars").innerHTML=list.map(c=>`
  <article class="card">${pic(c.img,c.name)}<div class="info"><h3>${c.name}</h3><div class="role">${c.role}</div>
  <div class="tags">${c.tags.map((t,i)=>`<span class="tag ${i%3==2?"r":""}">${t}</span>`).join("")}</div>
- <p>${c.desc}</p><a class="btn" href="${c.link}" target="_blank" rel="noopener">CHAT WITH ${c.name.split(" ")[0].toUpperCase()}</a></div></article>`).join("");
+ <div class="scroll">${P(c.desc)}</div><a class="btn" href="${c.link}" target="_blank" rel="noopener">CHAT WITH ${c.name.split(" ")[0].toUpperCase()}</a></div></article>`).join("");
 }
 drawChars("All");
 $("#filters").onclick=e=>{const b=e.target.closest("button");if(!b)return;
@@ -292,7 +334,7 @@ $("#routes").innerHTML=CITIES.slice(1).map(c=>`<path class="route" d="M${CITIES[
 $("#pins").innerHTML=CITIES.map((c,i)=>`<g class="pin" tabindex="0" data-i="${i}"><circle class="p" cx="${c.x}" cy="${c.y}" r="6"/><circle class="c" cx="${c.x}" cy="${c.y}" r="7"/><text x="${c.x+14}" y="${c.y+5}">${c.n}</text></g>`).join("");
 function city(i){const c=CITIES[i];
  document.querySelectorAll(".pin").forEach((p,j)=>p.classList.toggle("on",i==j));
- $("#cityInfo").innerHTML=`<h3>${c.n}</h3><div class="c2">${c.c}</div><p>${c.d}</p>`}
+ $("#cityInfo").innerHTML=`<h3>${c.n}</h3><div class="c2">${c.c}</div><div class="scroll">${P(c.d)}</div>`}
 document.querySelectorAll(".pin").forEach(p=>{p.onclick=()=>city(p.dataset.i);p.onkeydown=e=>{if(e.key=="Enter")city(p.dataset.i)}});
 city(0);
 
@@ -314,7 +356,6 @@ document.querySelectorAll("#home,section").forEach(s=>io.observe(s));
 addEventListener("scroll",()=>{const h=document.documentElement;
  $("#prog").style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+"%";$("#top").classList.toggle("show",scrollY>600)});
 $("#top").onclick=()=>scrollTo({top:0,behavior:"smooth"});
-$("#yr").textContent=new Date().getFullYear();
 
 // embers
 (()=>{const cv=$("#embers"),x=cv.getContext("2d");let W,H,P=[];
