@@ -181,7 +181,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 </section>
 
 <section id="map">
-  <div class="sh"><h2>THE MAP OF SIN</h2><p>Four cities. One web of debts. Tap a pin.</p></div>
+  <div class="sh"><h2>THE MAP OF SIN</h2><p>Four cities. One web of debts. <b>Tap a pin.</b></p></div>
   <div class="mapwrap">
     <svg class="map" viewBox="0 0 800 520" role="img" aria-label="Map of Europe with Paris, Milan, Moscow and London marked">
       <g class="land">
@@ -197,7 +197,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 </section>
 
 <section id="gallery">
-  <div class="sh"><h2>THE GALLERY</h2><p>Scroll sideways. Art, moodboards and fan work.</p></div>
+  <div class="sh"><h2>THE GALLERY</h2><p><i>Scroll sideways.</i></p></div>
   <div class="gal" id="gal"></div>
   <div class="galnav"><button class="btn" id="gl">&#10094;</button><button class="btn" id="gr">&#10095;</button></div>
 </section>
@@ -227,15 +227,16 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 <script>
 /* ========= EDIT YOUR CONTENT HERE ========= */
 const CHARACTERS=[
-{name:"Cyrill Allard",role:"Head of the Allard Family",fam:"Allard",img:"",tags:["FRANCE","BOSS","CALCULATING"],link:"#",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
-{name:"Lucas Alderidge",role:"Head of the Allard Family",fam:"Allard",img:"",tags:["FRANCE","RIGHTHANDMAN","COLD"],link:"#",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
-{name:"Astin Allard",role:"Head of the Allard Family",fam:"Allard",img:"",tags:["FRANCE","LOANSHARK","MANIPULATIVE"],link:"#",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
-{name:"Shawn 'Shaw' Sinclair",role:"Head of the Allard Family",fam:"Allard",img:"",tags:["FRANCE","ENFORCER","OBSESSIVE"],link:"#",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
-{name:"Lucio Borghese",role:"Head of the Borghese Family",fam:"Borghese",img:"",tags:["ITALY","BOSS","CUNNING"],link:"#",desc:"Placeholder: write his lore here. Loyalty, faith and a temper that the family keeps on a short leash."},
-{name:"Vladimir Romanov",role:"Pakhan of the Romanov Family",fam:"Romanov",img:"",tags:["RUSSIA","BOSS","RUTHLESS"],link:"#",desc:"Placeholder: write his lore here. Every debt is collected eventually, one way or another."},
-{name:"Dmitri Korchenkov",role:"Pakhan of the Romanov Family",fam:"Romanov",img:"",tags:["RUSSIA","ENFORCER","OBSERVANT"],link:"#",desc:"Placeholder: write his lore here. Every debt is collected eventually, one way or another."},
-{name:"William Moore",role:"Corrupt Solicitor",fam:"London",img:"",tags:["UK","LAWYER","CORRUPT"],link:"#",desc:"Placeholder: write his lore here. He keeps three families out of prison and himself out of reach."}, 
-{name:"Arthur Phillips",role:"Corrupt Solicitor",fam:"London",img:"",tags:["UK","BODYGUARD","PROTECTIVE"],link:"#",desc:"Placeholder: write his lore here. He keeps three families out of prison and himself out of reach."},
+{name:"Cyrill Allard",role:"Head of the Allard Family",fam:"Allard",img:"https://file.garden/ad35P9foF0kAW7I8/cyrille.jpg",tags:["FRANCE","BOSS","CALCULATING"],link:"https://janitorai.com/characters/bd420164-b000-40ca-a09a-cd57f43116d5_character-cyrille-allard",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
+{name:"Lucas Alderidge",role:"Right-Hand-Man of the Allard Family",fam:"Allard",img:"https://file.garden/ad35P9foF0kAW7I8/lucas.jpg",tags:["FRANCE","RIGHTHANDMAN","COLD"],link:"https://janitorai.com/characters/7413d40d-6075-496d-b9bc-c0de1e4e9731_character-lucas-alderidge",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
+{name:"Astin Allard",role:"Shame of the Allard Family",fam:"Allard",img:"https://file.garden/ad35P9foF0kAW7I8/astin.png",tags:["FRANCE","LOANSHARK","MANIPULATIVE"],link:"https://janitorai.com/characters/283913e3-af75-4afc-9ffc-640ae2b6bf94_character-astin-allard",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
+{name:"Shawn 'Shaw' Sinclair",role:"Enforcer of the Allard Family",fam:"Allard",img:""https://file.garden/ad35P9foF0kAW7I8/shawn.jpg,tags:["FRANCE","ENFORCER","OBSESSIVE"],link:"https://janitorai.com/characters/45f701f2-db69-48ab-bcc7-031ac0b95c19_character-shawn-shaw-sinclair",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
+{name:"Lucio Borghese",role:"Head of the Borghese Family",fam:"Borghese",img:"https://file.garden/ad35P9foF0kAW7I8/lucio.jpg",tags:["ITALY","BOSS","CUNNING"],link:"https://janitorai.com/characters/8d07f8d2-bc3f-45e3-add5-68bb456210aa_character-lucio-borghese",desc:"Placeholder: write his lore here. Loyalty, faith and a temper that the family keeps on a short leash."},
+{name:"Santana Borghese",role:"Future of the Borghese Family",fam:"Borghese",img:"https://file.garden/ad35P9foF0kAW7I8/santana.jpg",tags:["ITALY","FUTURE","IMPULSIVE"],link:"#",desc:"Placeholder: write his lore here. Loyalty, faith and a temper that the family keeps on a short leash."},
+{name:"Vladimir Romanov",role:"Pakhan of the Romanov Family",fam:"Romanov",img:"https://file.garden/ad35P9foF0kAW7I8/vladimir.jpg",tags:["RUSSIA","BOSS","RUTHLESS"],link:"https://janitorai.com/characters/f16b2f1d-5585-4617-8d1a-90ef75f7c8e2_character-vladimir-romanov",desc:"Placeholder: write his lore here. Every debt is collected eventually, one way or another."},
+{name:"Dmitri Korchenkov",role:"Enforcer of the Romanov Family",fam:"Romanov",img:"https://file.garden/ad35P9foF0kAW7I8/dmitri.png",tags:["RUSSIA","ENFORCER","OBSERVANT"],link:"https://janitorai.com/characters/951a9af1-092d-452f-8078-e4c1a8778881_character-dmitri-korchenkov",desc:"Placeholder: write his lore here. Every debt is collected eventually, one way or another."},
+{name:"William Moore",role:"Corrupt Solicitor",fam:"London",img:"https://file.garden/ad35P9foF0kAW7I8/william.jpg",tags:["UK","LAWYER","CORRUPT"],link:"https://janitorai.com/characters/42bb4fce-bff2-46fe-bf30-fab033f11903_character-william-moore",desc:"Placeholder: write his lore here. He keeps three families out of prison and himself out of reach."}, 
+{name:"Arthur Phillips",role:"S.A.S. Bodyguard",fam:"London",img:"https://file.garden/ad35P9foF0kAW7I8/arthur.jpg",tags:["UK","BODYGUARD","PROTECTIVE"],link:"https://janitorai.com/characters/eba1f797-c048-400e-8e02-dea5a6fcdef5_character-arthur-phillips",desc:"Placeholder: write his lore here. He keeps three families out of prison and himself out of reach."},
 ];
 const CITIES=[
 {n:"Paris",c:"FRANCE",x:360,y:250,d:"Seat of the Allard family. Add what happens here."},
