@@ -49,6 +49,18 @@ h2{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--gold);letter-spacing:.1em}
 .box.main h3{font-size:1.6rem;margin-bottom:1rem}
 .box.main p{font-size:1.15rem;margin-bottom:.9rem;max-width:80ch}
 .box.main p:last-child{margin-bottom:0}
+.scroll,.info p{max-height:170px;overflow-y:auto;padding-right:.7rem;scrollbar-width:thin;scrollbar-color:var(--red) transparent}
+.scroll::-webkit-scrollbar,.info p::-webkit-scrollbar{width:6px}
+.scroll::-webkit-scrollbar-thumb,.info p::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
+.box.main .scroll{max-height:260px}
+.box .scroll{max-height:150px}
+.box.main .scroll{max-height:260px}
+.scroll,.info p,.lore .box p{overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--red) transparent;padding-right:.6rem}
+.scroll{max-height:15rem}
+.info p{max-height:11rem}
+.lore .box p{max-height:9rem}
+.scroll::-webkit-scrollbar,.info p::-webkit-scrollbar,.lore .box p::-webkit-scrollbar{width:6px}
+.scroll::-webkit-scrollbar-thumb,.info p::-webkit-scrollbar-thumb,.lore .box p::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
 /* feature card (novel + characters) */
 .card{display:grid;grid-template-columns:240px 1fr;gap:2rem;padding:1.8rem;margin-bottom:2rem;background:linear-gradient(160deg,var(--panel),#080404);border:1px solid var(--line);position:relative;transition:.3s}
 .card:hover{border-color:var(--red2);box-shadow:0 0 30px rgba(179,18,27,.25)}
@@ -89,10 +101,12 @@ svg.map{width:100%;background:radial-gradient(circle,#160708,#060303);border:1px
 .plh{display:flex;gap:1.2rem;align-items:flex-end;margin-bottom:1.4rem}
 .plh .cov{width:120px;height:120px;background:linear-gradient(135deg,var(--red),#2a0508);border:2px solid var(--gold);display:grid;place-items:center;font:900 2.4rem 'Cinzel';color:var(--gold)}
 .plh h3{font-size:1.6rem;color:var(--gold2)}.plh p{color:var(--mute);font-size:.95rem}
-.trk{display:grid;grid-template-columns:2rem 1fr auto;gap:1rem;align-items:center;padding:.7rem .8rem;border-bottom:1px solid rgba(212,168,75,.12);cursor:pointer;transition:.2s}
+.trk{cursor:default;display:grid;grid-template-columns:2rem 1fr auto;gap:1rem;align-items:center;padding:.7rem .8rem;border-bottom:1px solid rgba(212,168,75,.12);transition:.2s}
 .trk:hover{background:rgba(179,18,27,.15)}.trk.on{background:rgba(179,18,27,.28)}
 .trk b{display:block;font-weight:600;color:var(--text)}.trk span{color:var(--mute);font-size:.9rem}
 .trk i{font-style:normal;color:var(--gold);font-family:'Cinzel';font-size:.8rem}
+.plbtn{text-align:center;margin-top:1.6rem}
+.spot{text-align:center;margin-top:1.6rem}
 .player{display:flex;align-items:center;gap:1rem;margin-top:1.2rem}
 .player button{width:46px;height:46px;border-radius:50%;border:0;background:var(--gold);color:#000;font-size:1.1rem;cursor:pointer}
 .bar{flex:1;height:5px;background:#2a1a1a;border-radius:3px;overflow:hidden}.bar div{height:100%;width:0;background:linear-gradient(90deg,var(--red2),var(--gold))}
@@ -130,9 +144,9 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 <div class="banner" id="home">
   <canvas id="embers"></canvas>
   <div>
-    <div class="pre">A NOVEL &amp; ROLEPLAY BOT SERIES</div>
+    <div class="pre">A SERIES BY MOEXRAN</div>
     <h1>The Devil's Angel</h1>
-    <p class="syn">They say devils don't need saving. But what if he was begging for it behind a heart that forgot how to hope? From mafia bosses to enforcers. From loansharks to corrupted lawyers. Can you survive the fall?</p>
+    <p class="syn">They say devils don't need saving. But what if he was begging for it behind a heart that forgot how to hope? From mafia bosses to enforcers. From loansharks to corrupted lawyers. <b>Can you survive the fall?</b></p>
     <a class="btn" href="#characters">MEET THE FAMILIES</a><a class="btn ghost" href="#novel">READ THE NOVEL</a>
   </div>
 </div>
@@ -141,14 +155,14 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
   <div class="sh"><h2>THE UNDERWORLD</h2><p>Three crowns. One corrupted law. No clean hands.</p></div>
   <div class="box main">
     <h3>The World of The Devil's Angel</h3>
-    <p>Write your main description here: the world, the rules of the underworld, how the families are tied together, and what the story is really about. This is the big picture that readers should understand before they meet anyone.</p>
-    <p>Add a second paragraph if you need one. Keep the smaller boxes below for each family's own lore.</p>
+    <div class="scroll"><p>Write your main description here: the world, the rules of the underworld, how the families are tied together, and what the story is really about. This is the big picture that readers should understand before they meet anyone.</p>
+    <p>Add a second paragraph if you need one. Keep the smaller boxes below for each family's own lore.</p></div>
   </div>
   <div class="lore">
-    <div class="box"><h3>The Allard Family</h3><p>Paris. Old money, velvet rooms and quiet executions. Edit this box with your lore.</p></div>
-    <div class="box"><h3>The Borghese Family</h3><p>Milan. Blood, faith and loyalty carved into marble. Edit this box with your lore.</p></div>
-    <div class="box"><h3>The Romanov Family</h3><p>Moscow. Cold winters, colder tempers, and debts that never expire. Edit this box with your lore.</p></div>
-    <div class="box"><h3>The Lawyer</h3><p>London. A man who sells the law by the hour and loyalty by the highest bid. Edit this box with your lore.</p></div>
+    <div class="box"><h3>The Allard Family</h3><div class="scroll"><p>Paris. Old money, velvet rooms and quiet executions. Edit this box with your lore.</p></div></div>
+    <div class="box"><h3>The Borghese Family</h3><div class="scroll"><p>Milan. Blood, faith and loyalty carved into marble. Edit this box with your lore.</p></div></div>
+    <div class="box"><h3>The Romanov Family</h3><div class="scroll"><p>Moscow. Cold winters, colder tempers, and debts that never expire. Edit this box with your lore.</p></div></div>
+    <div class="box"><h3>The Lawyer</h3><div class="scroll"><p>London. A man who sells the law by the hour and loyalty by the highest bid. Edit this box with your lore.</p></div></div>
   </div>
 </section>
 
@@ -159,7 +173,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
     <div class="info">
       <h3>The Devil's Angel</h3>
       <div class="role">Book One</div>
-      <div class="tags"><span class="tag">MAFIA</span><span class="tag">DARK ROMANCE</span><span class="tag r">ANGST</span><span class="tag">ORGANIZED CRIME</span><span class="tag r">REDEMPTION</span></div>
+      <div class="tags"><span class="tag">MAFIA</span><span class="tag">DARK ROMANCE</span><span class="tag r">DEAD DOVE</span><span class="tag">ORGANIZED CRIME</span><span class="tag r">HURT/COMFORT</span></div>
       <p>Write the novel's blurb here. Who is at the center of it? What do they stand to lose? End on a hook that makes readers click the button below.</p>
       <a class="btn" href="#" target="_blank" rel="noopener">READ NOW</a>
     </div>
@@ -193,31 +207,35 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
   <div class="pl">
     <div class="plh"><div class="cov">&#9830;</div><div><h3>The Devil's Angel</h3><p>Series playlist &bull; 6 songs</p></div></div>
     <div id="tracks"></div>
-    <div class="player"><button id="pp" aria-label="Play or pause">&#9654;</button><span id="now">Pick a song</span><div class="bar"><div id="fill"></div></div></div>
-    <p class="warn">Display only. Add real links by giving a track a "url" in the script.</p>
+    <div class="plbtn"><a class="btn" href="#" target="_blank" rel="noopener">LISTEN ON SPOTIFY</a></div>
   </div>
 </section>
 
 <section id="characters">
-  <div class="sh"><h2>THE CHARACTERS</h2><p>Click a family to filter. Chat with them in the RP bot.</p></div>
+  <div class="sh"><h2>THE CHARACTERS</h2><p>Click a family to filter. Chat with them in Janitor.AI.</p></div>
   <div class="filters" id="filters"></div>
   <div id="chars"></div>
 </section>
 
 <footer>
   <a class="logo" href="#home">THE DEVIL'S ANGEL</a>
-  <div class="soc"><a href="#">WATTPAD</a><a href="#">DISCORD</a><a href="#">RP BOT</a><a href="#">TUMBLR</a></div>
-  <p>&copy; <span id="yr"></span> The Devil's Angel. All characters and stories belong to the author. 18+ themes of crime and violence.</p>
+  <div class="soc"><a href="#">WATTPAD</a><a href="#">DISCORD</a><a href="#">JAI</a></div>
+  <p>&copy; <span id="yr"></span> The Devil's Angel. All characters and stories belong to @Moexran. 18+ themes of crime and violence.</p>
 </footer>
 <button id="top" aria-label="Back to top">&#9650;</button>
 
 <script>
 /* ========= EDIT YOUR CONTENT HERE ========= */
 const CHARACTERS=[
-{name:"Lucien Allard",role:"Head of the Allard Family",fam:"Allard",img:"",tags:["FRANCE","BOSS","CALCULATING"],link:"#",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
-{name:"Matteo Borghese",role:"Heir of the Borghese Family",fam:"Borghese",img:"",tags:["ITALY","ENFORCER","VOLATILE"],link:"#",desc:"Placeholder: write his lore here. Loyalty, faith and a temper that the family keeps on a short leash."},
-{name:"Dmitri Romanov",role:"Pakhan of the Romanov Family",fam:"Romanov",img:"",tags:["RUSSIA","LOANSHARK","RUTHLESS"],link:"#",desc:"Placeholder: write his lore here. Every debt is collected eventually, one way or another."},
-{name:"Edmund Hale",role:"Corrupt Solicitor",fam:"London",img:"",tags:["UK","LAWYER","CORRUPT"],link:"#",desc:"Placeholder: write his lore here. He keeps three families out of prison and himself out of reach."}
+{name:"Cyrill Allard",role:"Head of the Allard Family",fam:"Allard",img:"",tags:["FRANCE","BOSS","CALCULATING"],link:"#",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
+{name:"Lucas Alderidge",role:"Head of the Allard Family",fam:"Allard",img:"",tags:["FRANCE","RIGHTHANDMAN","COLD"],link:"#",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
+{name:"Astin Allard",role:"Head of the Allard Family",fam:"Allard",img:"",tags:["FRANCE","LOANSHARK","MANIPULATIVE"],link:"#",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
+{name:"Shawn 'Shaw' Sinclair",role:"Head of the Allard Family",fam:"Allard",img:"",tags:["FRANCE","ENFORCER","OBSESSIVE"],link:"#",desc:"Placeholder: write his lore here. Who is he, what does he hide, and what would it take to make him beg?"},
+{name:"Lucio Borghese",role:"Head of the Borghese Family",fam:"Borghese",img:"",tags:["ITALY","BOSS","CUNNING"],link:"#",desc:"Placeholder: write his lore here. Loyalty, faith and a temper that the family keeps on a short leash."},
+{name:"Vladimir Romanov",role:"Pakhan of the Romanov Family",fam:"Romanov",img:"",tags:["RUSSIA","BOSS","RUTHLESS"],link:"#",desc:"Placeholder: write his lore here. Every debt is collected eventually, one way or another."},
+{name:"Dmitri Korchenkov",role:"Pakhan of the Romanov Family",fam:"Romanov",img:"",tags:["RUSSIA","ENFORCER","OBSERVANT"],link:"#",desc:"Placeholder: write his lore here. Every debt is collected eventually, one way or another."},
+{name:"William Moore",role:"Corrupt Solicitor",fam:"London",img:"",tags:["UK","LAWYER","CORRUPT"],link:"#",desc:"Placeholder: write his lore here. He keeps three families out of prison and himself out of reach."}, 
+{name:"Arthur Phillips",role:"Corrupt Solicitor",fam:"London",img:"",tags:["UK","BODYGUARD","PROTECTIVE"],link:"#",desc:"Placeholder: write his lore here. He keeps three families out of prison and himself out of reach."},
 ];
 const CITIES=[
 {n:"Paris",c:"FRANCE",x:360,y:250,d:"Seat of the Allard family. Add what happens here."},
@@ -230,9 +248,9 @@ const GALLERY=[
 {t:"Moscow in winter",img:""},{t:"The lawyer's office",img:""},{t:"Fan art",img:""}
 ];
 const TRACKS=[
-{t:"Song Title One",a:"Artist Name",d:"3:24"},{t:"Song Title Two",a:"Artist Name",d:"4:02"},
-{t:"Song Title Three",a:"Artist Name",d:"2:58"},{t:"Song Title Four",a:"Artist Name",d:"3:41"},
-{t:"Song Title Five",a:"Artist Name",d:"3:15"},{t:"Song Title Six",a:"Artist Name",d:"4:30"}
+{t:"Me and the Devil",a:"Soap&Skin",d:"3:24"},{t:"RUNRUNRUN",a:"Dutch Melrose",d:"2:20"},
+{t:"if u think i'm pretty",a:"Artemas",d:"2:58"},{t:"Million Dollar Man",a:"Lana Del Rey",d:"3:41"},
+{t:"Old Money",a:"Lana del Rey",d:"3:15"},{t:"LET THE WORLD BURN",a:"Chris Grey",d:"2:43"}
 ];
 /* ========================================== */
 const $=s=>document.querySelector(s);
@@ -265,15 +283,8 @@ $("#gal").innerHTML=GALLERY.map(g=>`<figure><div class="ph">${g.img?`<img src="$
 $("#gl").onclick=()=>$("#gal").scrollBy({left:-340,behavior:"smooth"});
 $("#gr").onclick=()=>$("#gal").scrollBy({left:340,behavior:"smooth"});
 
-// fake player
-let cur=-1,playing=false,pct=0;
-$("#tracks").innerHTML=TRACKS.map((t,i)=>`<div class="trk" data-i="${i}"><i>${i+1}</i><div><b>${t.t}</b><span>${t.a}</span></div><i>${t.d}</i></div>`).join("");
-function sel(i){cur=i;pct=0;playing=true;
- document.querySelectorAll(".trk").forEach((e,j)=>e.classList.toggle("on",i==j));
- $("#now").textContent=TRACKS[i].t;$("#pp").innerHTML="&#10074;&#10074;"}
-$("#tracks").onclick=e=>{const t=e.target.closest(".trk");if(t)sel(+t.dataset.i)};
-$("#pp").onclick=()=>{if(cur<0)return sel(0);playing=!playing;$("#pp").innerHTML=playing?"&#10074;&#10074;":"&#9654;"};
-setInterval(()=>{if(!playing)return;pct+=.5;if(pct>=100)return sel((cur+1)%TRACKS.length);$("#fill").style.width=pct+"%"},300);
+// playlist
+$("#tracks").innerHTML=TRACKS.map((t,i)=>`<div class="trk"><i>${i+1}</i><div><b>${t.t}</b><span>${t.a}</span></div><i>${t.d}</i></div>`).join("");
 
 // nav
 const nav=$("#nav");$("#burger").onclick=()=>nav.classList.toggle("open");
