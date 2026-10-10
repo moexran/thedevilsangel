@@ -98,7 +98,8 @@ svg.map{width:100%;background:radial-gradient(circle,#160708,#060303);border:1px
 .land{fill:#1c0d0d;stroke:var(--gold);stroke-width:1;stroke-opacity:.5}
 .pin{cursor:pointer}.pin circle.c{fill:var(--red2);stroke:var(--gold2);stroke-width:2}
 .pin circle.p{fill:none;stroke:var(--red2);stroke-width:2;animation:pulse 2.2s infinite;transform-box:fill-box;transform-origin:center}
-.pin text{font:700 15px 'Cinzel';fill:var(--gold2)}
+.pin text{font:700 15px 'Cinzel';fill:var(--gold2);paint-order:stroke;stroke:#060303;stroke-width:4px;stroke-linejoin:round}
+.pin text.b{text-anchor:middle}
 .pin.on circle.c{fill:var(--gold)}
 @keyframes pulse{from{transform:scale(1);opacity:1}to{transform:scale(3.2);opacity:0}}
 .route{stroke:var(--red2);stroke-width:1.2;stroke-dasharray:5 6;fill:none;opacity:.6}
@@ -177,6 +178,55 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 .card,.card.wide{grid-template-columns:minmax(0,1fr)}.pic{width:100%;max-width:240px;margin:0 auto}
 .mapwrap{grid-template-columns:1fr}
 }
+
+/* nav: switch to burger earlier so 8 links never squash */
+@media(max-width:1020px){
+#burger{display:block}
+nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#050303;border-bottom:1px solid var(--line);display:none}
+nav.open{display:flex}nav a{padding:1rem 6vw}
+}
+/* lightbox */
+.gal .ph img,.cgal .ph img,.pic img{cursor:zoom-in}
+#lb{position:fixed;inset:0;z-index:120;background:rgba(5,3,3,.95);display:none;flex-direction:column;align-items:center;justify-content:center;padding:3.5rem 1rem 1.5rem;cursor:zoom-out}
+#lb.open{display:flex}
+#lb img{max-width:100%;max-height:78vh;max-height:78svh;object-fit:contain;border:2px solid var(--gold);box-shadow:0 0 40px rgba(179,18,27,.4)}
+#lb p{color:var(--gold2);font-style:italic;margin-top:.9rem;text-align:center;max-width:60ch}
+#lbx{position:absolute;top:.8rem;right:.8rem;width:46px;height:46px;border:1px solid var(--gold);background:var(--red);color:var(--gold2);font-size:1.3rem;cursor:pointer}
+/* quiz */
+.quiz{max-width:640px;margin:auto}
+.quiz .qn{font:.7rem 'Cinzel';letter-spacing:.2em;color:var(--mute);margin-bottom:.6rem}
+.quiz h3{font-size:1.35rem;line-height:1.3;outline:none}
+.qbar{height:3px;background:#2a1a1a;margin:.2rem 0 1rem}.qbar div{height:100%;background:linear-gradient(90deg,var(--red2),var(--gold));transition:width .4s}
+.qopt{display:block;width:100%;text-align:left;font:1.1rem/1.3 'Cormorant Garamond',serif;padding:.85rem 1rem;margin-top:.55rem;min-height:48px;background:#0c0606;color:var(--text);border:1px solid var(--line);cursor:pointer;transition:.2s}
+.qopt:active,.qopt:focus-visible{background:var(--red);border-color:var(--gold);color:var(--gold2)}
+@media(hover:hover){.qopt:hover{background:var(--red);border-color:var(--gold);color:var(--gold2)}}
+.quiz .res{text-align:center}
+.quiz .res .c2{color:var(--red2);font:700 .75rem 'Cinzel';letter-spacing:.25em}
+.quiz .res h3{font-size:1.9rem;margin:.5rem 0 .8rem;color:var(--gold2)}
+.quiz .res p{margin-bottom:1.2rem}
+.quiz .res .btn{margin:.3rem}
+.quiz .res .btn.ghost{margin-left:.3rem}
+/* afterword */
+#afterword{padding-top:3rem}
+.aw{max-width:760px;margin:auto}
+.awt{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;text-align:left;padding:1.2rem 1.4rem;min-height:64px;background:linear-gradient(160deg,#1d0a0c,#0a0505);color:var(--gold2);border:1px solid var(--gold);border-left:4px solid var(--red2);font:700 1rem 'Cinzel',serif;letter-spacing:.14em;cursor:pointer;transition:.25s}
+.awt small{display:block;font:italic 400 1rem 'Cormorant Garamond',serif;letter-spacing:0;color:var(--mute);margin-top:.2rem}
+.awt:hover,.awt[aria-expanded=true]{box-shadow:0 0 26px rgba(179,18,27,.35)}
+.awt i{font-style:normal;color:var(--gold);font-size:1.1rem;transition:transform .35s;flex:none}
+.awt[aria-expanded=true] i{transform:rotate(180deg)}
+.awp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+.aw.open .awp{grid-template-rows:1fr}
+.awi{overflow:hidden;min-height:0;visibility:hidden;transition:visibility .45s}
+.aw.open .awi{visibility:visible}
+.awb{padding:1.8rem 1.6rem 1.6rem;border:1px solid var(--line);border-top:0;background:linear-gradient(160deg,var(--panel),#080404)}
+.awh{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+.ava{flex:none;width:84px;height:84px;border:2px solid var(--gold);background:linear-gradient(160deg,#3a0a0e,#0a0303);position:relative;overflow:hidden;display:grid;place-items:center;font:900 2rem 'Cinzel';color:var(--gold)}
+.ava img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ava .fb{position:absolute;inset:0;display:grid;place-items:center}
+.awh h3{font-size:1.3rem;color:var(--gold2);letter-spacing:.08em}
+.awh span{color:var(--red2);font-style:italic}
+.awb .txt p{margin-bottom:1rem;font-size:1.12rem}
+.awb .sig{font:700 .95rem 'Cinzel',serif;letter-spacing:.2em;color:var(--gold);text-align:right;margin-top:1.2rem}
 @media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -186,7 +236,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
   <a class="logo" href="#home">THE DEVIL'S ANGEL</a>
   <button id="burger" aria-label="Menu" aria-expanded="false">&#9776;</button>
   <nav id="nav">
-    <a href="#home">HOME</a><a href="#lore">LORE</a><a href="#novel">NOVEL</a><a href="#map">MAP</a><a href="#gallery">GALLERY</a><a href="#playlist">PLAYLIST</a><a href="#characters">CHARACTERS</a>
+    <a href="#home">HOME</a><a href="#lore">LORE</a><a href="#novel">NOVEL</a><a href="#map">MAP</a><a href="#gallery">GALLERY</a><a href="#playlist">PLAYLIST</a><a href="#characters">CHARACTERS</a><a href="#afterword">AFTERWORD</a>
   </nav>
 </header>
 
@@ -270,7 +320,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
         <p>When ambitious law student Evelyn Moore saved a bleeding stranger from a lethal assassination attempt, she didn't just save a life—she invoked the obsessive devotion of Cyrille Allard, the ruthless, enigmatic kingpin of a massive mafia empire. Swept into a whirlwind of dark desire, lethal deception, and bloody power struggles, Evelyn is dragged deep into a ruthless shadowy domain where loyalty is dead and betrayal waits in every breath.</p>
 <p>With a vengeful rival brother waging all-out war for control and the crosshairs of a criminal underworld closing in, love becomes their most dangerous weapon. To survive the darkness, they must defy the world—<b>or be completely torn apart by the very shadows that bind them.</b></p>
       </div>
-      <a class="btn" href="#" target="_blank" rel="noopener">READ NOW</a>
+      <a class="btn" href="https://www.wattpad.com/story/366543079-the-devil%27s-angel-the-wattys-2025" target="_blank" rel="noopener">READ NOW</a>
     </div>
   </article>
 </section>
@@ -311,11 +361,27 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
   </div>
 </section>
 
+<section id="quiz">
+  <div class="sh rv"><h2>WHICH FAMILY ARE YOU?</h2><p>Five questions. No clean hands.</p></div>
+  <div class="box quiz rv" id="quizBox" aria-live="polite"></div>
+</section>
+
 <section id="characters">
   <div class="sh rv"><h2>THE CHARACTERS</h2><p>Tap a family to filter. Chat with them in Janitor.AI.</p></div>
   <div class="filters" id="filters"></div>
   <div class="search"><input id="q" type="search" placeholder="Search by name, role or trait..." aria-label="Search characters" autocomplete="off"></div>
   <div id="chars"></div>
+</section>
+
+<section id="afterword">
+  <div class="aw rv" id="aw">
+    <button class="awt" id="awt" aria-expanded="false" aria-controls="awp"><span>AFTERWORD<small>A few words from the author</small></span><i>&#9660;</i></button>
+    <div class="awp" id="awp"><div class="awi"><div class="awb">
+      <div class="awh"><div class="ava" id="awAva"></div><div><h3 id="awName"></h3><span id="awRole"></span></div></div>
+      <div class="txt" id="awTxt"></div>
+      <div class="sig" id="awSig"></div>
+    </div></div></div>
+  </div>
 </section>
 
 <footer>
@@ -324,6 +390,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
   <p>&copy; 2024 The Devil's Angel. All characters and stories belong to @Moexran. 18+ themes of crime and violence.</p>
 </footer>
 <button id="top" aria-label="Back to top">&#9650;</button>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image viewer"><button id="lbx" aria-label="Close">&#10005;</button><img id="lbi" alt="" referrerpolicy="no-referrer"><p id="lbc"></p></div>
 
 <script>
 /* ========= EDIT YOUR CONTENT HERE ========= */
@@ -376,6 +443,19 @@ const TRACKS=[
 {t:"if u think i'm pretty",a:"Artemas",d:"2:08"},{t:"Million Dollar Man",a:"Lana Del Rey",d:"3:41"},
 {t:"Old Money",a:"Lana del Rey",d:"4:31"},{t:"LET THE WORLD BURN",a:"Chris Grey",d:"2:43"}
 ];
+
+// ---- AFTERWORD ----
+const AW_NAME="Moexran";
+const AW_ROLE="Author of The Devil's Angel";
+const AW_IMG="https://file.garden/ad35P9foF0kAW7I8/moeava";
+const AW_TEXT=[
+"Hi, I'm <b>Moexran</b>! Also known as Moe, Moemoe, or that weird, pervy pee princess- ANYWAYS!",
+"The Devil's Angel is a very personal and special series to me, for more than one reason. It started as a novel I wrote in 2024. I was in a very lonely and dark place mentally, and one day, I decided I wanted to at least leave a prove of my existence. And, after almost a year, I finished the novel and even applied it for the Wattys!",
+"Another reason why this series is special... Is because it was the reason I started making AI RP bots. It was around that time that I got introduced to AI RP, and was HOOKED. I joined communities, and decided that <i>'why not?'</i> Hence how I made my very first bot, Cyrille!",
+"As the series continues to grow, the characters too. And I decided to widened the series's universe, adding even more factions from the original 3 families, and 6 main characters. And I love each and every one of them.",
+"I can never thank you enough for following my journey with this. Thank you so much for reading my writing and/or using my bots! I hope you enjoyed talking with them as much as I loved making them. I love you so much."
+];
+const AW_SIGN="— Moexran";
 /* ========================================== */
 const $=s=>document.querySelector(s);
 // turns a description into <p> paragraphs. Accepts: an array ["para 1","para 2"],
@@ -409,7 +489,7 @@ $("#q").oninput=e=>{curQ=e.target.value;drawChars(curF,curQ);post()};
 
 // map
 $("#routes").innerHTML=CITIES.slice(1).map(c=>`<path class="route" d="M${CITIES[0].x} ${CITIES[0].y}Q${(CITIES[0].x+c.x)/2} ${Math.min(CITIES[0].y,c.y)-50} ${c.x} ${c.y}"/>`).join("");
-$("#pins").innerHTML=CITIES.map((c,i)=>`<g class="pin" tabindex="0" role="button" aria-label="${c.n}" data-i="${i}"><circle class="p" cx="${c.x}" cy="${c.y}" r="6"/><circle class="c" cx="${c.x}" cy="${c.y}" r="7"/><text x="${c.x+14}" y="${c.y+5}">${c.n}</text></g>`).join("");
+$("#pins").innerHTML=CITIES.map((c,i)=>`<g class="pin" tabindex="0" role="button" aria-label="${c.n}" data-i="${i}"><circle class="p" cx="${c.x}" cy="${c.y}" r="6"/><circle class="c" cx="${c.x}" cy="${c.y}" r="7"/>${c.x>800?`<text class="b" x="${c.x}" y="${c.y+5}" dy="1.5em">${c.n}</text>`:`<text x="${c.x+14}" y="${c.y+5}">${c.n}</text>`}</g>`).join("");
 let curCity=0;
 function city(i){const c=CITIES[i];
  document.querySelectorAll(".pin").forEach((p,j)=>p.classList.toggle("on",i==j));
@@ -459,6 +539,72 @@ $("#top").onclick=()=>scrollTo({top:0,behavior:"smooth"});
   if(p.y<-10)P[i]=mk();x.beginPath();x.arc(p.x,p.y,p.r,0,7);
   x.fillStyle=p.g?"rgba(243,217,139,.8)":"rgba(224,37,47,.8)";x.shadowBlur=10;x.shadowColor=p.g?"#d4a84b":"#e0252f";x.fill()});
   raf=requestAnimationFrame(f)}f();
+})();
+
+
+// ---- fit map: auto-centers everything (land + pins + labels) with even padding ----
+function fitMap(){const s=$("svg.map");if(!s||!s.getClientRects().length)return;
+ const els=[s.querySelector(".land"),...s.querySelectorAll(".pin text"),...s.querySelectorAll(".pin circle.c")];
+ let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+ els.forEach(e=>{const b=e.getBBox();x0=Math.min(x0,b.x);y0=Math.min(y0,b.y);x1=Math.max(x1,b.x+b.width);y1=Math.max(y1,b.y+b.height)});
+ const pad=46;s.setAttribute("viewBox",`${x0-pad} ${y0-pad} ${x1-x0+2*pad} ${y1-y0+2*pad}`)}
+fitMap();addEventListener("resize",fitMap);addEventListener("load",fitMap);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitMap);
+
+// ---- afterword dropdown ----
+(()=>{const aw=$("#aw"),btn=$("#awt");
+ $("#awName").textContent=AW_NAME;$("#awRole").textContent=AW_ROLE;$("#awSig").textContent=AW_SIGN;
+ $("#awTxt").innerHTML=AW_TEXT.map(t=>`<p>${t}</p>`).join("");
+ $("#awAva").innerHTML=`<span class="fb">${(AW_NAME[0]||"M").toUpperCase()}</span>`+(AW_IMG?IMG(AW_IMG,AW_NAME):"");
+ const set=o=>{aw.classList.toggle("open",o);btn.setAttribute("aria-expanded",o)};
+ window.openAW=()=>{if(!aw.classList.contains("open")){set(true);setTimeout(()=>aw.scrollIntoView({behavior:"smooth",block:"nearest"}),480)}};
+ btn.onclick=()=>{const o=!aw.classList.contains("open");set(o);if(o)setTimeout(()=>aw.scrollIntoView({behavior:"smooth",block:"nearest"}),480)};
+ document.addEventListener("click",e=>{const a=e.target.closest('a[href="#afterword"]');if(a)setTimeout(openAW,350)});
+ if(location.hash=="#afterword")setTimeout(openAW,300);
+})();
+
+// ---- lightbox (tap any picture to enlarge) ----
+(()=>{const lb=$("#lb"),im=$("#lbi"),cp=$("#lbc");
+ const close=()=>{lb.classList.remove("open");document.body.style.overflow="";im.removeAttribute("src")};
+ document.addEventListener("click",e=>{
+  if(lb.classList.contains("open")){close();return}
+  const ph=e.target.closest(".gal .ph,.cgal .ph,.pic");if(!ph)return;
+  const i=ph.querySelector("img");if(!i||!i.naturalWidth)return;
+  const f=ph.closest("figure");
+  im.src=i.currentSrc||i.src;im.alt=i.alt;
+  cp.textContent=f?(f.querySelector("figcaption")||{}).textContent||i.alt:i.alt;
+  lb.classList.add("open");document.body.style.overflow="hidden";$("#lbx").focus()});
+ addEventListener("keydown",e=>{if(e.key=="Escape"&&lb.classList.contains("open"))close()});
+})();
+
+// ---- which family are you? quiz ----
+(()=>{const Q=[
+ {q:"What does power mean to you?",o:[["Legacy, held together by a promise","Allard"],["Being unforgettable. Loud, feared, adored","Borghese"],["Patience. Let the moment come to you","Montanari"],["A silence that makes the room go cold","Romanov"],["A smile, a title, and everyone owing you","Winata"],["Knowing which secrets to bury","London"]]},
+ {q:"Pick your Friday night.",o:[["Candlelit dinner, with a plan behind the smile","Allard"],["A party where I'm the main event","Borghese"],["A quiet casino table, just watching","Montanari"],["Alone, snow outside, a glass in hand","Romanov"],["A charity gala. Cameras everywhere","Winata"],["A private club, a handshake, a signed deal","London"]]},
+ {q:"Your biggest weakness?",o:[["The family I can't let go of","Allard"],["My pride. I hate losing","Borghese"],["I trust almost no one","Montanari"],["I forgot how to feel anything","Romanov"],["I need everyone to love me","Winata"],["Everyone has a price. Mine too","London"]]},
+ {q:"The one rule you never break?",o:[["Never betray the family","Allard"],["Never hurt women or children","Borghese"],["No needless cruelty","Montanari"],["No explanations. No apologies","Romanov"],["Never get caught","Winata"],["Never work for free","London"]]},
+ {q:"Choose your ride.",o:[["Black car, trusted driver","Allard"],["Sports car, windows down","Borghese"],["A quiet sedan nobody notices","Montanari"],["Armored SUV, tinted glass","Romanov"],["An official convoy","Winata"],["A black cab. Always","London"]]}];
+ const R={Allard:["THE ALLARD","Loyalty is your religion and legacy is your burden. You wear elegance like armor and hold the people you love a little too tightly."],
+  Borghese:["THE BORGHESE","You do nothing quietly. Charming, ruthless, and oddly principled. You would rather be feared than overlooked."],
+  Montanari:["THE MONTANARI","Calm, patient, always three moves ahead. You never chase an opportunity. You wait until it walks in."],
+  Romanov:["THE ROMANOV","Few understand you and fewer dare to try. Your silence says more than most people's threats."],
+  Winata:["THE WINATA","Smiles, handshakes, a spotless reputation. Why break the system when you can own it?"],
+  London:["THE LONDON SHADOWS","No crown, no throne. Just sharp instincts, useful secrets, and exactly the right door to open."]};
+ const box=$("#quizBox");let i=0,sc={};
+ function show(){
+  if(i>=Q.length){
+   const top=Object.keys(sc).sort((a,b)=>sc[b]-sc[a])[0],r=R[top];
+   box.innerHTML=`<div class="res"><div class="c2">YOUR FAMILY</div><h3 tabindex="-1" id="qh">${r[0]}</h3><p>${r[1]}</p><button class="btn" data-meet="${top}">MEET THEIR CHARACTERS</button><button class="btn ghost" data-retry="1">RETAKE</button></div>`;
+   $("#qh").focus({preventScroll:true});return}
+  const q=Q[i];
+  box.innerHTML=`<div class="qn">QUESTION ${i+1} / ${Q.length}</div><div class="qbar"><div style="width:${i/Q.length*100}%"></div></div><h3 tabindex="-1" id="qh">${q.q}</h3>`+q.o.map((o,j)=>`<button class="qopt" data-f="${o[1]}">${o[0]}</button>`).join("");
+  if(i)$("#qh").focus({preventScroll:true})}
+ box.onclick=e=>{
+  const o=e.target.closest(".qopt"),m=e.target.closest("[data-meet]"),r=e.target.closest("[data-retry]");
+  if(o){sc[o.dataset.f]=(sc[o.dataset.f]||0)+1;i++;show()}
+  else if(r){i=0;sc={};show()}
+  else if(m){const b=document.querySelector(`#filters button[data-f="${m.dataset.meet}"]`);if(b)b.click();$("#characters").scrollIntoView({behavior:"smooth"})}};
+ show();
 })();
 
 // ---- extras ----
