@@ -179,12 +179,16 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 .mapwrap{grid-template-columns:1fr}
 }
 
-/* nav: switch to burger earlier so 8 links never squash */
-@media(max-width:1020px){
+/* nav: switch to burger earlier so 9 links never squash */
+@media(max-width:1100px){
 #burger{display:block}
 nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#050303;border-bottom:1px solid var(--line);display:none}
 nav.open{display:flex}nav a{padding:1rem 6vw}
 }
+/* trailer */
+.trailer{margin-top:2.2rem;text-align:center}
+.trailer h3{font-size:1rem;letter-spacing:.3em;color:var(--gold2);margin-bottom:1rem}
+.trailer video{display:block;width:100%;max-width:900px;margin:0 auto;aspect-ratio:16/9;background:#000;border:1px solid var(--gold);box-shadow:0 0 40px rgba(179,18,27,.35)}
 /* lightbox */
 .gal .ph img,.cgal .ph img,.pic img{cursor:zoom-in}
 #lb{position:fixed;inset:0;z-index:120;background:rgba(5,3,3,.95);display:none;flex-direction:column;align-items:center;justify-content:center;padding:3.5rem 1rem 1.5rem;cursor:zoom-out}
@@ -236,7 +240,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
   <a class="logo" href="#home">THE DEVIL'S ANGEL</a>
   <button id="burger" aria-label="Menu" aria-expanded="false">&#9776;</button>
   <nav id="nav">
-    <a href="#home">HOME</a><a href="#lore">LORE</a><a href="#novel">NOVEL</a><a href="#map">MAP</a><a href="#gallery">GALLERY</a><a href="#playlist">PLAYLIST</a><a href="#characters">CHARACTERS</a><a href="#afterword">AFTERWORD</a>
+    <a href="#home">HOME</a><a href="#lore">LORE</a><a href="#novel">NOVEL</a><a href="#map">MAP</a><a href="#gallery">GALLERY</a><a href="#playlist">PLAYLIST</a><a href="#quiz">QUIZ</a><a href="#characters">CHARACTERS</a><a href="#afterword">AFTERWORD</a>
   </nav>
 </header>
 
@@ -350,6 +354,13 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
   <div class="sh rv"><h2>THE GALLERY</h2><p><i>Scroll sideways.</i></p></div>
   <div class="gal" id="gal"></div>
   <div class="galnav"><button class="btn" id="gl" aria-label="Previous">&#10094;</button><span class="galcount" id="gc"></span><button class="btn" id="gr" aria-label="Next">&#10095;</button></div>
+  <div class="trailer rv">
+    <h3>WATCH THE TRAILER</h3>
+    <video controls playsinline preload="metadata" poster="">
+      <source src="PASTE_YOUR_FILEGARDEN_MP4_LINK_HERE.mp4" type="video/mp4">
+      Your browser doesn't support video playback.
+    </video>
+  </div>
 </section>
 
 <section id="playlist">
