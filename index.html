@@ -5,14 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#050303">
+<meta name="color-scheme" content="dark">
 <title>The Devil's Angel</title>
+<meta name="description" content="The Devil's Angel: an international crime saga by Moexran. Explore the families, the map of sin, the playlist, and chat with the characters.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Devil's Angel">
+<meta property="og:description" content="Five crowns. One corrupted law. No clean hands. Meet the families and find out which one you belong to.">
+<meta property="og:image" content="https://file.garden/ad35P9foF0kAW7I8/TheDevilsAngel.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20100%20100%27%3E%3Crect%20width=%27100%27%20height=%27100%27%20rx=%2718%27%20fill=%27%23050303%27/%3E%3Cpath%20d=%27M50%2012L84%2050L50%2088L16%2050Z%27%20fill=%27%23b3121b%27%20stroke=%27%23d4a84b%27%20stroke-width=%276%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#050303;--panel:#120808;--red:#b3121b;--red2:#e0252f;--gold:#d4a84b;--gold2:#f3d98b;--text:#e9e0d0;--mute:#9a8e7c;--line:rgba(212,168,75,.28);--gd:#b08a32;--gd2:#e0c06a}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:70px}
-html{-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
 body{background:radial-gradient(ellipse at top,#1a0709 0,var(--bg) 55%);color:var(--text);font:20px/1.6 'Cormorant Garamond',serif;overflow-x:hidden}
 h1,h2,h3,.btn,nav a,.tag{font-family:'Cinzel',serif}
 a{color:inherit}
@@ -48,18 +56,17 @@ h2{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--gold);letter-spacing:.1em}
 .box:before{top:6px;left:6px;border-right:0;border-bottom:0}.box:after{bottom:6px;right:6px;border-left:0;border-top:0}
 .box h3{color:var(--gold2);font-size:1.1rem;letter-spacing:.1em;margin-bottom:.6rem}
 .box p{color:var(--text);opacity:.9}
-.box.main{margin-bottom:1.4rem;padding:2.6rem 2.8rem;border-top-width:4px;background:linear-gradient(160deg,#1d0a0c,#0a0505)}
+.box.main{margin-bottom:1.4rem;padding:2.6rem 2.8rem}
 /* gold "World" box: deep antique gold so it stands apart from the red family boxes */
 .box.main{border:1px solid rgba(176,138,50,.55);border-top:4px solid var(--gd);border-image:linear-gradient(90deg,#6e5016,var(--gd2),#6e5016) 1;background:radial-gradient(ellipse at top,rgba(176,138,50,.16),transparent 65%),linear-gradient(160deg,#1c1507,#0b0804);box-shadow:0 0 34px rgba(176,138,50,.16),inset 0 0 40px rgba(176,138,50,.05)}
 .box.main:before,.box.main:after{width:20px;height:20px;border-color:var(--gd2)}
 .box.main:before{top:8px;left:8px}.box.main:after{bottom:8px;right:8px}
-.box.main h3{color:var(--gd2);text-shadow:0 0 18px rgba(176,138,50,.35);text-align:center;letter-spacing:.14em}
+.box.main h3{color:var(--gd2);text-shadow:0 0 18px rgba(176,138,50,.35);text-align:center;letter-spacing:.14em;font-size:1.6rem;margin-bottom:1rem}
 .box.main h3:after{content:"\25C6";display:block;font-size:.7rem;color:var(--gd);margin-top:.5rem;letter-spacing:0}
 .box.main .scroll{scrollbar-color:var(--gd) transparent}
 .box.main .scroll::-webkit-scrollbar-thumb{background:var(--gd)}
 .box.main .scroll>p:first-child:first-letter{font:900 2.6rem/1 'Cinzel',serif;color:var(--gd2);float:left;margin:.15rem .5rem 0 0}
 .box.main .scroll b{color:var(--gd2)}
-.box.main h3{font-size:1.6rem;margin-bottom:1rem}
 .box.main p{font-size:1.15rem;margin-bottom:.9rem;max-width:80ch}
 .box.main p:last-child{margin-bottom:0}
 /* scrollable description containers: ONE rule set for every description on the site */
@@ -71,7 +78,7 @@ h2{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--gold);letter-spacing:.1em}
 .scroll p:last-child{margin-bottom:0}
 .box.main .scroll{max-height:18rem}   /* main world description */
 .lore .box .scroll{max-height:10rem}  /* family boxes */
-.info .scroll{max-height:11rem;margin-bottom:1.2rem} /* character cards + novel blurb */
+.info .scroll{max-height:11rem;margin-bottom:.6rem} /* character cards + novel blurb */
 #cityInfo .scroll{max-height:16rem}   /* map city description */
 /* feature card (novel + characters) */
 .card{display:grid;grid-template-columns:240px 1fr;gap:2rem;padding:1.8rem;margin-bottom:2rem;background:linear-gradient(160deg,var(--panel),#080404);border:1px solid var(--line);position:relative;transition:.3s}
@@ -80,7 +87,7 @@ h2{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--gold);letter-spacing:.1em}
 .pic{aspect-ratio:2/3;background:linear-gradient(160deg,#3a0a0e,#0a0303);border:2px solid var(--gold);display:grid;place-items:center;font:900 4rem 'Cinzel';color:var(--gold);text-align:center;overflow:hidden;position:relative}
 .pic img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .pic .fb{text-align:center}
-.gal .ph .fb{position:absolute;inset:0;display:grid;place-items:center}
+.gal .ph .fb,.cgal .ph .fb,.ava .fb{position:absolute;inset:0;display:grid;place-items:center}
 .pic small{font-size:.7rem;letter-spacing:.2em;color:var(--mute);display:block}
 .info{min-width:0}
 .info h3{font-size:1.7rem;color:var(--gold2);letter-spacing:.06em}
@@ -120,23 +127,17 @@ svg.map{width:100%;background:radial-gradient(circle,#160708,#060303);border:1px
 .cgal figure{flex:0 0 min(240px,70vw);scroll-snap-align:start;border:1px solid var(--gold);background:var(--panel);padding:.4rem}
 .cgal .ph{aspect-ratio:16/10;display:grid;place-items:center;background:linear-gradient(150deg,#3a0a0e,#0a0303);color:var(--mute);font:.6rem 'Cinzel';letter-spacing:.2em;position:relative;overflow:hidden}
 .cgal .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cgal .ph .fb{position:absolute;inset:0;display:grid;place-items:center}
 .cgal figcaption{padding:.4rem .2rem 0;color:var(--gold2);font-style:italic;font-size:.95rem;line-height:1.3}
 /* playlist */
 .pl{max-width:760px;margin:auto;background:linear-gradient(180deg,#1b0709,#080404);border:1px solid var(--line);padding:1.6rem}
 .plh{display:flex;gap:1.2rem;align-items:flex-end;margin-bottom:1.4rem}
 .plh .cov{width:120px;height:120px;background:linear-gradient(135deg,var(--red),#2a0508);border:2px solid var(--gold);display:grid;place-items:center;font:900 2.4rem 'Cinzel';color:var(--gold)}
 .plh h3{font-size:1.6rem;color:var(--gold2)}.plh p{color:var(--mute);font-size:.95rem}
-.trk{cursor:default;display:grid;grid-template-columns:2rem 1fr auto;gap:1rem;align-items:center;padding:.7rem .8rem;border-bottom:1px solid rgba(212,168,75,.12);transition:.2s}
-.trk:hover{background:rgba(179,18,27,.15)}.trk.on{background:rgba(179,18,27,.28)}
+.trk{cursor:pointer;color:inherit;text-decoration:none;display:grid;grid-template-columns:2rem 1fr auto;gap:1rem;align-items:center;padding:.7rem .8rem;border-bottom:1px solid rgba(212,168,75,.12);transition:.2s}
+.trk:hover,.trk:focus-visible{background:rgba(179,18,27,.22)}
 .trk b{display:block;font-weight:600;color:var(--text)}.trk span{color:var(--mute);font-size:.9rem}
 .trk i{font-style:normal;color:var(--gold);font-family:'Cinzel';font-size:.8rem}
 .plbtn{text-align:center;margin-top:1.6rem}
-.spot{text-align:center;margin-top:1.6rem}
-.player{display:flex;align-items:center;gap:1rem;margin-top:1.2rem}
-.player button{width:46px;height:46px;border-radius:50%;border:0;background:var(--gold);color:#000;font-size:1.1rem;cursor:pointer}
-.bar{flex:1;height:5px;background:#2a1a1a;border-radius:3px;overflow:hidden}.bar div{height:100%;width:0;background:linear-gradient(90deg,var(--red2),var(--gold))}
-#now{font-size:.9rem;color:var(--gold2);min-width:9ch}
 /* footer */
 footer{margin-top:4rem;padding:3rem 6vw;text-align:center;border-top:3px double var(--gold);background:linear-gradient(var(--bg),#1a0507)}
 footer .logo{font-size:1.4rem}
@@ -172,9 +173,6 @@ section{padding:3.8rem 5vw}
 .pin text{font-size:30px}.pin circle.c{r:11px}.pin circle.p{r:10px}
 .plh .cov{width:90px;height:90px}
 .trk{grid-template-columns:1.4rem 1fr auto;gap:.7rem}
-#burger{display:block}
-nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:#050303;border-bottom:1px solid var(--line);display:none}
-nav.open{display:flex}nav a{padding:1rem 6vw}
 .card,.card.wide{grid-template-columns:minmax(0,1fr)}.pic{width:100%;max-width:240px;margin:0 auto}
 .mapwrap{grid-template-columns:1fr}
 }
@@ -226,15 +224,40 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 .awh{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
 .ava{flex:none;width:84px;height:84px;border:2px solid var(--gold);background:linear-gradient(160deg,#3a0a0e,#0a0303);position:relative;overflow:hidden;display:grid;place-items:center;font:900 2rem 'Cinzel';color:var(--gold)}
 .ava img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ava .fb{position:absolute;inset:0;display:grid;place-items:center}
 .awh h3{font-size:1.3rem;color:var(--gold2);letter-spacing:.08em}
 .awh span{color:var(--red2);font-style:italic}
 .awb .txt p{margin-bottom:1rem;font-size:1.12rem}
 .awb .sig{font:700 .95rem 'Cinzel',serif;letter-spacing:.2em;color:var(--gold);text-align:right;margin-top:1.2rem}
+/* read more / show less (replaces scroll-inside-scroll traps on touch screens) */
+.scroll.open{max-height:none!important;overflow:visible!important}
+.xp{display:block;margin:.5rem auto 0;min-height:44px;padding:.5rem .3rem;background:none;border:0;border-bottom:1px solid var(--red2);color:var(--gold);font:700 .68rem 'Cinzel',serif;letter-spacing:.16em;cursor:pointer}
+.xp[hidden]{display:none}
+.xp:hover{color:var(--gold2)}
+.info .xp{margin:0 0 .8rem}
+/* family colour accents */
+.card.ch{border-left:4px solid var(--fc)}
+.card.ch:hover{border-left-color:var(--fc)}
+.filters button[style]:before{content:"";display:inline-block;width:.55em;height:.55em;margin-right:.55em;border-radius:50%;background:var(--fc);box-shadow:0 0 0 1px var(--gold2)}
+/* quiz result bars */
+.rbs{max-width:420px;margin:1.2rem auto 1.4rem;text-align:left}
+.rb{display:grid;grid-template-columns:7.5rem 1fr 3rem;gap:.6rem;align-items:center;margin:.4rem 0;font:.62rem 'Cinzel',serif;letter-spacing:.12em;color:var(--mute)}
+.rb>div{height:6px;background:#2a1a1a;border-radius:3px;overflow:hidden}
+.rb i{display:block;width:var(--w);height:100%;border-radius:3px;animation:grow .9s ease-out}
+.rb em{font-style:normal;text-align:right;color:var(--gold2)}
+@keyframes grow{from{width:0}}
+.hint{text-align:center;color:var(--mute);font-style:italic;font-size:.9rem;margin-top:1.2rem}
+.pin circle.h{fill:transparent}
+footer .btn{margin-top:.4rem}
+/* lightbox arrows */
+#lbp,#lbn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:60px;border:1px solid var(--gold);background:rgba(179,18,27,.88);color:var(--gold2);font-size:1.2rem;cursor:pointer;display:none;z-index:2}
+#lbp{left:.5rem}#lbn{right:.5rem}
+#lb.multi #lbp,#lb.multi #lbn{display:block}
+#lb img{touch-action:pan-y}
 @media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<noscript><p style="padding:2rem;text-align:center">This site needs JavaScript turned on to show its content.</p></noscript>
 <div id="prog"></div>
 <header>
   <a class="logo" href="#home">THE DEVIL'S ANGEL</a>
@@ -271,7 +294,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
     <div class="box rv"><h3>The Allard Family</h3><div class="scroll"><p><b>Paris.</b> Founded in the 1930s by Louis Allard, the family began as a modest criminal operation dealing in smuggling and illegal gambling. Over the decades, it evolved into one of France's most formidable syndicates, maintaining a discreet but persistent influence under François Allard before reaching unprecedented heights under his second son, Cyrille.</p>
 <p>Today, the Allards are a dynasty of extraordinary wealth and carefully cultivated prestige. Their public empire spans fashion, automotive parts, and logistics; their private one extends into narcotics, arms trafficking, assassination, cybercrime, and money laundering. Billions flow through a labyrinth of shell companies and offshore accounts, concealing the true scale of their influence from the very society that helps sustain it.</p>
 <p><i>Yet the greatest threat to the Allard empire may not come from a rival family. It comes from within.</i></p>
-<p>François's decision to name Cyrille his successor instead of his firstborn, Astin, fractured the family at its core. Astin considers the inheritance a birthright stolen from him and is determined to reclaim his position. Cyrille, meanwhile, is caught between his duty to his promise to Francois and his unwillingness to destroy his own brother. But affection cannot erase ambition, and blood does not guarantee loyalty.</p>
+<p>François's decision to name Cyrille his successor instead of his firstborn, Astin, fractured the family at its core. Astin considers the inheritance a birthright stolen from him and is determined to reclaim his position. Cyrille, meanwhile, is caught between his duty to his promise to François and his unwillingness to destroy his own brother. But affection cannot erase ambition, and blood does not guarantee loyalty.</p>
 <p>For the Allards, reputation is everything. Loyalty is expected. Secrecy is absolute. Anyone who threatens the family risks becoming a cautionary tale.</p></div></div>
 
     <div class="box rv"><h3>The Borghese Family</h3><div class="scroll"><p><b>Milan.</b> Wealth, ruthlessness, and an appetite for victory define the Borghese family. Led by Lucio Borghese, this Italian criminal dynasty has built its empire on weapons, narcotics, extortion, and the kind of intimidation that makes even powerful men reconsider their alliances.</p>
@@ -354,20 +377,15 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
   <div class="sh rv"><h2>THE GALLERY</h2><p><i>Scroll sideways.</i></p></div>
   <div class="gal" id="gal"></div>
   <div class="galnav"><button class="btn" id="gl" aria-label="Previous">&#10094;</button><span class="galcount" id="gc"></span><button class="btn" id="gr" aria-label="Next">&#10095;</button></div>
-  <div class="trailer rv">
-    <h3>WATCH THE TRAILER</h3>
-    <video controls playsinline preload="metadata" poster="">
-      <source src="PASTE_YOUR_FILEGARDEN_MP4_LINK_HERE.mp4" type="video/mp4">
-      Your browser doesn't support video playback.
-    </video>
-  </div>
+  <div class="trailer rv" id="trailer"></div>
 </section>
 
 <section id="playlist">
   <div class="sh rv"><h2>THE PLAYLIST</h2><p>The songs that sound like the series.</p></div>
   <div class="pl rv">
-    <div class="plh"><div class="cov">&#9830;</div><div><h3>The Devil's Angel</h3><p>Series playlist &bull; 6 songs</p></div></div>
+    <div class="plh"><div class="cov">&#9830;</div><div><h3>The Devil's Angel</h3><p id="plCount">Series playlist</p></div></div>
     <div id="tracks"></div>
+    <p class="hint">Tap a song to find it on Spotify.</p>
     <div class="plbtn"><a class="btn" href="https://open.spotify.com/playlist/3BMl5N6StFpukzQbiK4u2l?si=c6a83ac39b14436a" target="_blank" rel="noopener">LISTEN ON SPOTIFY</a></div>
   </div>
 </section>
@@ -397,11 +415,12 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 
 <footer>
   <a class="logo" href="#home">THE DEVIL'S ANGEL</a>
-  <div class="soc"><a href="https://www.wattpad.com/user/Moexran">WATTPAD</a><a href="https://discord.gg/ttycJtNF3E">SERVER (18+)</a><a href="https://janitorai.com/profiles/46d4fda8-565e-4384-bc2d-e5831a4397f7_profile-of-moexran">JanitorAI</a></div>
-  <p>&copy; 2024 The Devil's Angel. All characters and stories belong to @Moexran. 18+ themes of crime and violence.</p>
+  <div class="soc"><a href="https://www.wattpad.com/user/Moexran" target="_blank" rel="noopener">WATTPAD</a><a href="https://discord.gg/ttycJtNF3E" target="_blank" rel="noopener">SERVER (18+)</a><a href="https://janitorai.com/profiles/46d4fda8-565e-4384-bc2d-e5831a4397f7_profile-of-moexran" target="_blank" rel="noopener">JANITORAI</a></div>
+  <button class="btn" id="shareBtn" type="button" hidden>SHARE THE SITE</button>
+  <p>&copy; <span id="yr">2024</span> The Devil's Angel. All characters and stories belong to @Moexran. 18+ themes of crime and violence.</p>
 </footer>
 <button id="top" aria-label="Back to top">&#9650;</button>
-<div id="lb" role="dialog" aria-modal="true" aria-label="Image viewer"><button id="lbx" aria-label="Close">&#10005;</button><img id="lbi" alt="" referrerpolicy="no-referrer"><p id="lbc"></p></div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image viewer"><button id="lbx" aria-label="Close">&#10005;</button><button id="lbp" aria-label="Previous image">&#10094;</button><img id="lbi" alt=""><p id="lbc"></p><button id="lbn" aria-label="Next image">&#10095;</button></div>
 
 <script>
 /* ========= EDIT YOUR CONTENT HERE ========= */
@@ -446,6 +465,9 @@ const CITY_GALLERY={
  Jakarta:[{t:"Hotel Indonesia Roundabout",img:"https://file.garden/ad35P9foF0kAW7I8/jakarta.jpg"},{t:"Winata Mansion",img:"https://file.garden/ad35P9foF0kAW7I8/winatamans.jpg"},{t:"Winata Building",img:"https://file.garden/ad35P9foF0kAW7I8/winatabuild.jpg"}],
  London:[{t:"Big Ben",img:"https://file.garden/ad35P9foF0kAW7I8/london.jpg"},{t:"Moore Law Office",img:"https://file.garden/ad35P9foF0kAW7I8/moorefirm.jpg"},{t:"Phillips's Apartment",img:"https://file.garden/ad35P9foF0kAW7I8/arthapart.jpg"}]
 };
+// ---- TRAILER: paste your .mp4 link between the quotes. Leave empty and the trailer block is hidden. ----
+const TRAILER_URL="";
+const TRAILER_POSTER="";
 const NOVEL_COVER="https://file.garden/ad35P9foF0kAW7I8/TheDevilsAngel.jpg"; // link for the book cover here
 const GALLERY=[
 {t:"Lucas Alderidge, Cyrille Allard, Shawn Sinclair",img:"https://file.garden/ad35P9foF0kAW7I8/trio-allard.jpg"},{t:"William Moore, Astin Allard",img:"https://file.garden/ad35P9foF0kAW7I8/wilast.jpg"},{t:"Lucio & Santana Borghese",img:"https://file.garden/ad35P9foF0kAW7I8/lucsan.jpg"},{t:"Vladimir Romanov, Dmitri Korchenkov",img:"https://file.garden/ad35P9foF0kAW7I8/vladim.jpg"},{t:"The Montanaris",img:"https://file.garden/ad35P9foF0kAW7I8/montanaris.jpg"},{t:"Edward Winata",img:"https://file.garden/ad35P9foF0kAW7I8/winatapic.jpg"},{t:"Arthur Phillips",img:"https://file.garden/ad35P9foF0kAW7I8/arthurpic.jpg"}
@@ -462,9 +484,9 @@ const AW_ROLE="Author of The Devil's Angel";
 const AW_IMG="https://file.garden/ad35P9foF0kAW7I8/moeava";
 const AW_TEXT=[
 "Hi, I'm <b>Moexran</b>! Also known as Moe, Moemoe, or that weird, pervy pee princess- ANYWAYS!",
-"The Devil's Angel is a very personal and special series to me, for more than one reason. It started as a novel I wrote in 2024. I was in a very lonely and dark place mentally, and one day, I decided I wanted to at least leave a prove of my existence. And, after almost a year, I finished the novel and even applied it for the Wattys!",
+"The Devil's Angel is a very personal and special series to me, for more than one reason. It started as a novel I wrote in 2024. I was in a very lonely and dark place mentally, and one day, I decided I wanted to at least leave a proof of my existence. And, after almost a year, I finished the novel and even applied it for the Wattys!",
 "Another reason why this series is special... Is because it was the reason I started making AI RP bots. It was around that time that I got introduced to AI RP, and was HOOKED. I joined communities, and decided that <i>'why not?'</i> Hence how I made my very first bot, Cyrille!",
-"As the series continues to grow, the characters too. And I decided to widened the series's universe, adding even more factions from the original 3 families, and 6 main characters. And I love each and every one of them.",
+"As the series continues to grow, the characters too. And I decided to widen the series's universe, adding even more factions from the original 3 families, and 6 main characters. And I love each and every one of them.",
 "I can never thank you enough for following my journey with this. Thank you so much for reading my writing and/or using my bots! I hope you enjoyed talking with them as much as I loved making them. I love you so much."
 ];
 const AW_SIGN="— Moexran";
@@ -475,43 +497,66 @@ const $=s=>document.querySelector(s);
 const P=d=>{if(Array.isArray(d))return d.map(x=>`<p>${x}</p>`).join("");
  d=String(d).trim();if(/<p[\s>]/i.test(d))return d;
  return d.split(/\n\s*\n/).map(x=>`<p>${x.trim()}</p>`).join("")};
+const FC={Allard:"#e0252f",Borghese:"#3fae7a",Montanari:"#4f8fd8",Romanov:"#9fc7e8",Winata:"#e08a3a",London:"#a8a8b8"}; // family accent colours
+document.body.classList.add("js");
+// scroll reveal
+const rvIO="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");rvIO.unobserve(e.target)}}),{threshold:.08,rootMargin:"0px 0px -6% 0px"}):null;
+// long text: fade hint while scrolling + READ MORE button when it overflows
+const fade=el=>{const open=el.classList.contains("open"),ov=el.scrollHeight>el.clientHeight+4;
+ el.classList.toggle("more",ov&&el.scrollTop+el.clientHeight<el.scrollHeight-4);
+ const x=el.nextElementSibling;if(x&&x.classList.contains("xp"))x.hidden=!(ov||open)};
+// run after anything is (re)rendered
+function post(){
+ document.querySelectorAll(".rv:not(.in)").forEach(el=>rvIO?rvIO.observe(el):el.classList.add("in"));
+ document.querySelectorAll(".scroll").forEach(el=>{
+  if(!(el.nextElementSibling&&el.nextElementSibling.classList.contains("xp"))){
+   const b=document.createElement("button");b.type="button";b.className="xp";b.hidden=true;b.setAttribute("aria-expanded","false");b.textContent="READ MORE \u25BC";el.after(b)}
+  fade(el)})}
+// share (native share sheet on phones, copy-link fallback elsewhere)
+const canShare=!!(navigator.share||(navigator.clipboard&&navigator.clipboard.writeText));
+async function shareIt(text,btn){const url=location.href.split("#")[0];
+ try{if(navigator.share){await navigator.share({title:document.title,text,url});return}
+  await navigator.clipboard.writeText(text+" "+url);
+  if(btn){const o=btn.textContent;btn.textContent="LINK COPIED";setTimeout(()=>btn.textContent=o,1800)}}catch(e){}}
 const FB=(t,l)=>`<div class="fb">${l}<small>${t}</small></div>`;
-const IMG=(src,alt)=>`<img src="${String(src).trim()}" alt="${alt}" referrerpolicy="no-referrer" loading="lazy" decoding="async" onload="this.parentNode.querySelector('.fb').style.display='none'" onerror="this.remove()">`;
+const IMG=(src,alt)=>`<img src="${String(src).trim()}" alt="${alt}" loading="lazy" decoding="async" onload="this.parentNode.querySelector('.fb').style.display='none'" onerror="this.remove()">`;
 const pic=(img,t)=>`<div class="pic">${FB("PHOTO HERE",t.split(" ").map(w=>w[0]).join(""))}${img?IMG(img,t):""}</div>`;
 
 // characters + filters
 const FAMILIES=["Allard","Borghese","Montanari","Romanov","Winata","London"];
 const fams=["All",...new Set([...FAMILIES,...CHARACTERS.map(c=>c.fam)])];
 const cnt=f=>f=="All"?CHARACTERS.length:CHARACTERS.filter(c=>c.fam==f).length;
-$("#filters").innerHTML=fams.map((f,i)=>`<button class="${i?"":"on"}" data-f="${f}">${f.toUpperCase()}<em>${cnt(f)}</em></button>`).join("");
+$("#filters").innerHTML=fams.map((f,i)=>`<button class="${i?"":"on"}" data-f="${f}"${FC[f]?` style="--fc:${FC[f]}"`:""}>${f.toUpperCase()}<em>${cnt(f)}</em></button>`).join("");
 let curF="All",curQ="";
 function drawChars(f,q=""){
  const k=q.trim().toLowerCase();
  const list=CHARACTERS.filter(c=>(f=="All"||c.fam==f)&&(!k||[c.name,c.role,c.fam,...c.tags].join(" ").toLowerCase().includes(k)));
  if(!list.length){$("#chars").innerHTML=`<p class="warn" style="text-align:center">${k?"No characters match that search.":"The "+f+" family's characters are coming soon."}</p>`;return}
  $("#chars").innerHTML=list.map(c=>`
- <article class="card rv">${pic(c.img,c.name)}<div class="info"><h3>${c.name}</h3><div class="role">${c.role}</div>
+ <article class="card ch rv" style="--fc:${FC[c.fam]||"var(--gold)"}">${pic(c.img,c.name)}<div class="info"><h3>${c.name}</h3><div class="role">${c.role}</div>
  <div class="tags">${c.tags.map((t,i)=>`<span class="tag ${i%3==2?"r":""}">${t}</span>`).join("")}</div>
- <div class="scroll">${P(c.desc)}</div><a class="btn" href="${c.link}" target="_blank" rel="noopener">CHAT WITH ${c.name.split(" ")[0].toUpperCase()}</a></div></article>`).join("");
+ <div class="scroll">${P(c.desc)}</div>${c.link&&c.link!="#"?`<a class="btn" href="${c.link}" target="_blank" rel="noopener">CHAT WITH ${c.name.split(" ")[0].toUpperCase()}</a>`:`<span class="btn off" aria-disabled="true">COMING SOON</span>`}</div></article>`).join("");
+ post();
 }
 drawChars("All");
 $("#filters").onclick=e=>{const b=e.target.closest("button");if(!b)return;
- document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x==b));curF=b.dataset.f;drawChars(curF,curQ);post()};
-$("#q").oninput=e=>{curQ=e.target.value;drawChars(curF,curQ);post()};
+ document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x==b));curF=b.dataset.f;drawChars(curF,curQ)};
+$("#q").oninput=e=>{curQ=e.target.value;drawChars(curF,curQ)};
 
 // map
 $("#routes").innerHTML=CITIES.slice(1).map(c=>`<path class="route" d="M${CITIES[0].x} ${CITIES[0].y}Q${(CITIES[0].x+c.x)/2} ${Math.min(CITIES[0].y,c.y)-50} ${c.x} ${c.y}"/>`).join("");
-$("#pins").innerHTML=CITIES.map((c,i)=>`<g class="pin" tabindex="0" role="button" aria-label="${c.n}" data-i="${i}"><circle class="p" cx="${c.x}" cy="${c.y}" r="6"/><circle class="c" cx="${c.x}" cy="${c.y}" r="7"/>${c.x>800?`<text class="b" x="${c.x}" y="${c.y+5}" dy="1.5em">${c.n}</text>`:`<text x="${c.x+14}" y="${c.y+5}">${c.n}</text>`}</g>`).join("");
+$("#pins").innerHTML=CITIES.map((c,i)=>`<g class="pin" tabindex="0" role="button" aria-label="${c.n}" data-i="${i}"><circle class="h" cx="${c.x}" cy="${c.y}" r="24"/><circle class="p" cx="${c.x}" cy="${c.y}" r="6"/><circle class="c" cx="${c.x}" cy="${c.y}" r="7"/>${c.x>800?`<text class="b" x="${c.x}" y="${c.y+5}" dy="1.5em">${c.n}</text>`:`<text x="${c.x+14}" y="${c.y+5}">${c.n}</text>`}</g>`).join("");
 let curCity=0;
 function city(i){const c=CITIES[i];
  document.querySelectorAll(".pin").forEach((p,j)=>p.classList.toggle("on",i==j));
  $("#cityInfo").innerHTML=`<h3>${c.n}</h3><div class="c2">${c.c}</div><div class="scroll">${P(c.d)}</div><div class="cnav"><button data-d="-1" aria-label="Previous city">&#10094; ${CITIES[(i+CITIES.length-1)%CITIES.length].n.toUpperCase()}</button><span>${i+1} / ${CITIES.length}</span><button data-d="1" aria-label="Next city">${CITIES[(i+1)%CITIES.length].n.toUpperCase()} &#10095;</button></div>`;
  curCity=i;
  const g=CITY_GALLERY[c.n]||[];
- $("#cityGal").innerHTML=g.length?`<h4>${c.n.toUpperCase()} GALLERY</h4><div class="row">${g.map(x=>`<figure><div class="ph"><span class="fb">IMAGE HERE</span>${x.img?IMG(x.img,x.t):""}</div><figcaption>${x.t}</figcaption></figure>`).join("")}</div>`:""}
-document.querySelectorAll(".pin").forEach(p=>{p.onclick=()=>{city(p.dataset.i);const r=$("#cityInfo").getBoundingClientRect();if(r.top>innerHeight-120||r.bottom<80)$("#cityInfo").scrollIntoView({behavior:"smooth",block:"center"});post()};p.onkeydown=e=>{if(e.key=="Enter"||e.key==" "){e.preventDefault();city(p.dataset.i)}}});
+ $("#cityGal").innerHTML=g.length?`<h4>${c.n.toUpperCase()} GALLERY</h4><div class="row">${g.map(x=>`<figure><div class="ph"><span class="fb">IMAGE HERE</span>${x.img?IMG(x.img,x.t):""}</div><figcaption>${x.t}</figcaption></figure>`).join("")}</div>`:"";
+ post()}
+document.querySelectorAll(".pin").forEach(p=>{p.onclick=()=>{city(p.dataset.i);const r=$("#cityInfo").getBoundingClientRect();if(r.top>innerHeight-120||r.bottom<80)$("#cityInfo").scrollIntoView({behavior:"smooth",block:"center"})};p.onkeydown=e=>{if(e.key=="Enter"||e.key==" "){e.preventDefault();city(p.dataset.i)}}});
 $("#cityInfo").onclick=e=>{const b=e.target.closest("[data-d]");if(!b)return;
- city((curCity+ +b.dataset.d+CITIES.length)%CITIES.length);post()};
+ city((curCity+ +b.dataset.d+CITIES.length)%CITIES.length)};
 city(0);
 
 $("#cover").innerHTML=FB("COVER HERE","TDA")+(NOVEL_COVER?IMG(NOVEL_COVER,"The Devil's Angel cover"):"");
@@ -524,13 +569,21 @@ gal.addEventListener("scroll",gcount,{passive:true});addEventListener("resize",g
 $("#gl").onclick=()=>$("#gal").scrollBy({left:-340,behavior:"smooth"});
 $("#gr").onclick=()=>$("#gal").scrollBy({left:340,behavior:"smooth"});
 
+// trailer (only if a link is set)
+(()=>{const t=$("#trailer");if(!TRAILER_URL){t.remove();return}
+ t.innerHTML=`<h3>WATCH THE TRAILER</h3><video controls playsinline preload="metadata"${TRAILER_POSTER?` poster="${TRAILER_POSTER}"`:""}><source src="${TRAILER_URL}" type="video/mp4">Your browser doesn't support video playback.</video>`})();
+
 // playlist
-$("#tracks").innerHTML=TRACKS.map((t,i)=>`<div class="trk"><i>${i+1}</i><div><b>${t.t}</b><span>${t.a}</span></div><i>${t.d}</i></div>`).join("");
+$("#tracks").innerHTML=TRACKS.map((t,i)=>`<a class="trk" href="https://open.spotify.com/search/${encodeURIComponent(t.t+" "+t.a)}" target="_blank" rel="noopener"><i>${i+1}</i><div><b>${t.t}</b><span>${t.a}</span></div><i>${t.d}</i></a>`).join("");
+$("#plCount").textContent="Series playlist \u2022 "+TRACKS.length+" songs";
 
 // nav
 const nav=$("#nav");const bg=$("#burger");
 bg.onclick=()=>bg.setAttribute("aria-expanded",nav.classList.toggle("open"));
 nav.onclick=e=>{if(e.target.tagName=="A"){nav.classList.remove("open");bg.setAttribute("aria-expanded","false")}};
+const closeNav=()=>{nav.classList.remove("open");bg.setAttribute("aria-expanded","false")};
+document.addEventListener("click",e=>{if(nav.classList.contains("open")&&!e.target.closest("header"))closeNav()});
+addEventListener("keydown",e=>{if(e.key=="Escape")closeNav()});
 const links=[...nav.querySelectorAll("a")];
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")=="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
 document.querySelectorAll("#home,section").forEach(s=>io.observe(s));
@@ -539,18 +592,18 @@ addEventListener("scroll",()=>{const h=document.documentElement;
 $("#top").onclick=()=>scrollTo({top:0,behavior:"smooth"});
 
 // embers
-(()=>{const cv=$("#embers"),x=cv.getContext("2d");let W,H,P=[];
+(()=>{const cv=$("#embers"),x=cv.getContext("2d");let W,H,E=[],raf,inView=true;
  const rs=()=>{W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight};rs();addEventListener("resize",rs);
- const mk=()=>({x:Math.random()*W,y:H+10,r:Math.random()*2.2+.5,v:Math.random()*.9+.3,s:Math.random()*2,g:Math.random()<.5});
- const N=innerWidth<600?35:70;for(let i=0;i<N;i++){const p=mk();p.y=Math.random()*H;P.push(p)}
- if(matchMedia("(prefers-reduced-motion:reduce)").matches){return}
- let vis=true;new IntersectionObserver(e=>{const was=vis;vis=e[0].isIntersecting;if(vis&&!was)go()}).observe(cv);
- document.addEventListener("visibilitychange",()=>{const was=vis;vis=!document.hidden;if(vis&&!was)go()});
- let raf;const go=()=>{cancelAnimationFrame(raf);f()};
- function f(){if(!vis)return;x.clearRect(0,0,W,H);P.forEach((p,i)=>{p.y-=p.v;p.x+=Math.sin(p.y/40+p.s)*.4;
-  if(p.y<-10)P[i]=mk();x.beginPath();x.arc(p.x,p.y,p.r,0,7);
+ const mk=fill=>({x:Math.random()*W,y:fill?Math.random()*H:H+10,r:Math.random()*2.2+.5,v:Math.random()*.9+.3,s:Math.random()*2,g:Math.random()<.5});
+ const N=innerWidth<600?35:70;for(let i=0;i<N;i++)E.push(mk(true));
+ if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+ function f(){x.clearRect(0,0,W,H);E.forEach((p,i)=>{p.y-=p.v;p.x+=Math.sin(p.y/40+p.s)*.4;
+  if(p.y<-10)E[i]=mk(false);x.beginPath();x.arc(p.x,p.y,p.r,0,7);
   x.fillStyle=p.g?"rgba(243,217,139,.8)":"rgba(224,37,47,.8)";x.shadowBlur=10;x.shadowColor=p.g?"#d4a84b":"#e0252f";x.fill()});
-  raf=requestAnimationFrame(f)}f();
+  raf=requestAnimationFrame(f)}
+ const run=()=>{cancelAnimationFrame(raf);if(inView&&!document.hidden)raf=requestAnimationFrame(f)};
+ new IntersectionObserver(e=>{inView=e[0].isIntersecting;run()}).observe(cv);
+ document.addEventListener("visibilitychange",run);run();
 })();
 
 
@@ -575,18 +628,26 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitMap);
  if(location.hash=="#afterword")setTimeout(openAW,300);
 })();
 
-// ---- lightbox (tap any picture to enlarge) ----
-(()=>{const lb=$("#lb"),im=$("#lbi"),cp=$("#lbc");
+// ---- lightbox (tap any picture to enlarge; swipe or use arrows to browse the same gallery) ----
+(()=>{const lb=$("#lb"),im=$("#lbi"),cp=$("#lbc");let set=[],k=0,tx=null;
+ const show=()=>{const i=set[k],f=i.closest("figure"),fc=f&&f.querySelector("figcaption");
+  im.src=i.currentSrc||i.src;im.alt=i.alt;
+  cp.textContent=(fc?fc.textContent:i.alt)+(set.length>1?"  ("+(k+1)+"/"+set.length+")":"");
+  lb.classList.toggle("multi",set.length>1)};
+ const go=d=>{k=(k+d+set.length)%set.length;show()};
  const close=()=>{lb.classList.remove("open");document.body.style.overflow="";im.removeAttribute("src")};
  document.addEventListener("click",e=>{
-  if(lb.classList.contains("open")){close();return}
+  if(lb.classList.contains("open")){if(e.target.closest("#lbp"))go(-1);else if(e.target.closest("#lbn"))go(1);else close();return}
   const ph=e.target.closest(".gal .ph,.cgal .ph,.pic");if(!ph)return;
   const i=ph.querySelector("img");if(!i||!i.naturalWidth)return;
-  const f=ph.closest("figure");
-  im.src=i.currentSrc||i.src;im.alt=i.alt;
-  cp.textContent=f?(f.querySelector("figcaption")||{}).textContent||i.alt:i.alt;
+  const grp=ph.closest("#gal,.cgal .row");
+  set=grp?[...grp.querySelectorAll(".ph img")].filter(x=>x.naturalWidth):[i];
+  k=Math.max(0,set.indexOf(i));show();
   lb.classList.add("open");document.body.style.overflow="hidden";$("#lbx").focus()});
- addEventListener("keydown",e=>{if(e.key=="Escape"&&lb.classList.contains("open"))close()});
+ lb.addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});
+ lb.addEventListener("touchend",e=>{if(tx===null||set.length<2)return;const d=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(d)>50)go(d<0?1:-1)});
+ addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;
+  if(e.key=="Escape")close();else if(e.key=="ArrowRight"&&set.length>1)go(1);else if(e.key=="ArrowLeft"&&set.length>1)go(-1)});
 })();
 
 // ---- which family are you? quiz ----
@@ -602,36 +663,39 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitMap);
   Romanov:["THE ROMANOV","Few understand you and fewer dare to try. Your silence says more than most people's threats."],
   Winata:["THE WINATA","Smiles, handshakes, a spotless reputation. Why break the system when you can own it?"],
   London:["THE LONDON SHADOWS","No crown, no throne. Just sharp instincts, useful secrets, and exactly the right door to open."]};
- const box=$("#quizBox");let i=0,sc={};
+ const box=$("#quizBox");let i=0,sc={},shareTxt="";
  function show(){
   if(i>=Q.length){
-   const top=Object.keys(sc).sort((a,b)=>sc[b]-sc[a])[0],r=R[top];
-   box.innerHTML=`<div class="res"><div class="c2">YOUR FAMILY</div><h3 tabindex="-1" id="qh">${r[0]}</h3><p>${r[1]}</p><button class="btn" data-meet="${top}">MEET THEIR CHARACTERS</button><button class="btn ghost" data-retry="1">RETAKE</button></div>`;
+   const rows=Object.entries(sc).sort((a,b)=>b[1]-a[1]),top=rows[0][0],r=R[top];
+   shareTxt=`I got "${r[0]}" on the Which Family Are You? quiz. The Devil's Angel`;
+   const bars=rows.map(([f,n])=>`<div class="rb"><span>${f.toUpperCase()}</span><div><i style="--w:${n/Q.length*100}%;background:${FC[f]}"></i></div><em>${Math.round(n/Q.length*100)}%</em></div>`).join("");
+   box.innerHTML=`<div class="res"><div class="c2">YOUR FAMILY</div><h3 tabindex="-1" id="qh">${r[0]}</h3><p>${r[1]}</p><div class="rbs">${bars}</div><button class="btn" data-meet="${top}">MEET THEIR CHARACTERS</button><button class="btn ghost" data-retry="1">RETAKE</button>${canShare?`<button class="btn ghost" data-share="1">SHARE RESULT</button>`:""}</div>`;
    $("#qh").focus({preventScroll:true});return}
   const q=Q[i];
   box.innerHTML=`<div class="qn">QUESTION ${i+1} / ${Q.length}</div><div class="qbar"><div style="width:${i/Q.length*100}%"></div></div><h3 tabindex="-1" id="qh">${q.q}</h3>`+q.o.map((o,j)=>`<button class="qopt" data-f="${o[1]}">${o[0]}</button>`).join("");
   if(i)$("#qh").focus({preventScroll:true})}
  box.onclick=e=>{
-  const o=e.target.closest(".qopt"),m=e.target.closest("[data-meet]"),r=e.target.closest("[data-retry]");
+  const o=e.target.closest(".qopt"),m=e.target.closest("[data-meet]"),r=e.target.closest("[data-retry]"),sh=e.target.closest("[data-share]");
   if(o){sc[o.dataset.f]=(sc[o.dataset.f]||0)+1;i++;show()}
   else if(r){i=0;sc={};show()}
+  else if(sh)shareIt(shareTxt,sh)
   else if(m){const b=document.querySelector(`#filters button[data-f="${m.dataset.meet}"]`);if(b)b.click();$("#characters").scrollIntoView({behavior:"smooth"})}};
  show();
 })();
 
-// ---- extras ----
-document.body.classList.add("js");
-// scroll reveal
-const rvIO="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");rvIO.unobserve(e.target)}}),{threshold:.08,rootMargin:"0px 0px -6% 0px"}):null;
-// fade hint on scrollable text + placeholder buttons
-const fade=el=>el.classList.toggle("more",el.scrollHeight>el.clientHeight+4&&el.scrollTop+el.clientHeight<el.scrollHeight-4);
-function post(){
- document.querySelectorAll(".rv:not(.in)").forEach(el=>rvIO?rvIO.observe(el):el.classList.add("in"));
- document.querySelectorAll(".btn[href='#']").forEach(a=>{a.classList.add("off");a.removeAttribute("target");a.setAttribute("aria-disabled","true");a.tabIndex=-1;a.textContent="COMING SOON"});
- document.querySelectorAll(".scroll").forEach(fade)}
+// ---- footer: share button + current year ----
+(()=>{const b=$("#shareBtn");if(canShare){b.hidden=false;b.onclick=()=>shareIt("The Devil's Angel: five crowns, one corrupted law, no clean hands.",b)}
+ const y=new Date().getFullYear();if(y>2024)$("#yr").textContent="2024\u2013"+y})();
+
+// keep fade hints and READ MORE buttons right while scrolling / resizing
 document.addEventListener("scroll",e=>{if(e.target.classList&&e.target.classList.contains("scroll"))fade(e.target)},true);
 addEventListener("resize",()=>document.querySelectorAll(".scroll").forEach(fade));
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>document.querySelectorAll(".scroll").forEach(fade));
+document.addEventListener("click",e=>{const b=e.target.closest(".xp");if(!b)return;
+ const t=b.previousElementSibling,o=t.classList.toggle("open");
+ b.setAttribute("aria-expanded",o);b.textContent=o?"SHOW LESS \u25B2":"READ MORE \u25BC";
+ if(!o){t.scrollTop=0;const r=t.parentNode.getBoundingClientRect();if(r.top<0)t.parentNode.scrollIntoView({block:"start"})}
+ fade(t)});
 post();
 </script>
 </body>
