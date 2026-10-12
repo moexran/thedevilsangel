@@ -24,6 +24,7 @@ html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100
 body{background:radial-gradient(ellipse at top,#1a0709 0,var(--bg) 55%);color:var(--text);font:20px/1.6 'Cormorant Garamond',serif;overflow-x:hidden}
 h1,h2,h3,.btn,nav a,.tag{font-family:'Cinzel',serif}
 a{color:inherit}
+[hidden]{display:none!important}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 /* header */
 header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:.8rem 5vw;background:rgba(5,3,3,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -154,7 +155,7 @@ footer p{color:var(--mute);font-size:.95rem;margin-top:.7rem}
 /* placeholder buttons */
 .btn.off{opacity:.45;border-style:dashed;cursor:default;pointer-events:none}
 /* character search */
-.search{max-width:420px;margin:0 auto 2rem}
+.search{display:flex;gap:.6rem;max-width:560px;margin:0 auto 2rem}
 .search input{width:100%;padding:.75rem 1rem;font:1rem 'Cormorant Garamond',serif;color:var(--text);background:#0c0606;border:1px solid var(--line);border-radius:0;-webkit-appearance:none;appearance:none}
 .search input::placeholder{color:var(--mute);font-style:italic}
 .search input:focus{outline:2px solid var(--gold);outline-offset:2px}
@@ -173,9 +174,16 @@ section{padding:3.8rem 5vw}
 .pin text{font-size:30px}.pin circle.c{r:11px}.pin circle.p{r:10px}
 .plh .cov{width:90px;height:90px}
 .trk{grid-template-columns:1.4rem 1fr auto;gap:.7rem}
-.card,.card.wide{grid-template-columns:minmax(0,1fr)}.pic{width:100%;max-width:240px;margin:0 auto}
+.card.wide{grid-template-columns:minmax(0,1fr)}.card.wide .pic{width:100%;max-width:240px;margin:0 auto}
+.card.ch{grid-template-columns:112px minmax(0,1fr);gap:1rem;padding:1rem}
+.card.ch .pic{align-self:start;aspect-ratio:3/5;font-size:2rem}.card.ch .pic img{object-position:center top}.card.ch .pic small{font-size:.5rem;letter-spacing:.1em}
+.card.ch .info h3{font-size:1.25rem}
+.card.ch .info .scroll{font-size:1rem}
+.card.ch .info .btn{padding:.65rem 1rem;font-size:.7rem;letter-spacing:.12em}
 .mapwrap{grid-template-columns:1fr}
 }
+
+@media(max-width:420px){.card.ch{grid-template-columns:92px minmax(0,1fr);gap:.8rem;padding:.8rem}.card.ch .pic{font-size:1.6rem}}
 
 /* nav: switch to burger earlier so 9 links never squash */
 @media(max-width:1100px){
@@ -191,7 +199,7 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 .gal .ph img,.cgal .ph img,.pic img{cursor:zoom-in}
 #lb{position:fixed;inset:0;z-index:120;background:rgba(5,3,3,.95);display:none;flex-direction:column;align-items:center;justify-content:center;padding:3.5rem 1rem 1.5rem;cursor:zoom-out}
 #lb.open{display:flex}
-#lb img{max-width:100%;max-height:78vh;max-height:78svh;object-fit:contain;border:2px solid var(--gold);box-shadow:0 0 40px rgba(179,18,27,.4)}
+#lb img{max-width:100%;max-height:78vh;max-height:78svh;object-fit:contain;border:2px solid var(--gold);box-shadow:0 0 40px rgba(179,18,27,.4);touch-action:pan-y}
 #lb p{color:var(--gold2);font-style:italic;margin-top:.9rem;text-align:center;max-width:60ch}
 #lbx{position:absolute;top:.8rem;right:.8rem;width:46px;height:46px;border:1px solid var(--gold);background:var(--red);color:var(--gold2);font-size:1.3rem;cursor:pointer}
 /* quiz */
@@ -231,12 +239,12 @@ nav.open{display:flex}nav a{padding:1rem 6vw}
 /* read more / show less (replaces scroll-inside-scroll traps on touch screens) */
 .scroll.open{max-height:none!important;overflow:visible!important}
 .xp{display:block;margin:.5rem auto 0;min-height:44px;padding:.5rem .3rem;background:none;border:0;border-bottom:1px solid var(--red2);color:var(--gold);font:700 .68rem 'Cinzel',serif;letter-spacing:.16em;cursor:pointer}
-.xp[hidden]{display:none}
 .xp:hover{color:var(--gold2)}
 .info .xp{margin:0 0 .8rem}
 /* family colour accents */
 .card.ch{border-left:4px solid var(--fc)}
 .card.ch:hover{border-left-color:var(--fc)}
+.card.ch .info h3{padding-right:48px}
 .filters button[style]:before{content:"";display:inline-block;width:.55em;height:.55em;margin-right:.55em;border-radius:50%;background:var(--fc);box-shadow:0 0 0 1px var(--gold2)}
 /* quiz result bars */
 .rbs{max-width:420px;margin:1.2rem auto 1.4rem;text-align:left}
@@ -252,7 +260,6 @@ footer .btn{margin-top:.4rem}
 #lbp,#lbn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:60px;border:1px solid var(--gold);background:rgba(179,18,27,.88);color:var(--gold2);font-size:1.2rem;cursor:pointer;display:none;z-index:2}
 #lbp{left:.5rem}#lbn{right:.5rem}
 #lb.multi #lbp,#lb.multi #lbn{display:block}
-#lb img{touch-action:pan-y}
 @media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 /* ===== characters: capped height, scrolls inside ===== */
@@ -266,7 +273,6 @@ footer .btn{margin-top:.4rem}
 .card.hl{border-color:var(--gold2);box-shadow:0 0 34px rgba(243,217,139,.35)}
 .fav{position:absolute;top:.6rem;right:.6rem;width:44px;height:44px;background:rgba(5,3,3,.7);border:1px solid var(--line);color:var(--gold);font-size:1.3rem;cursor:pointer;z-index:2}
 .fav[aria-pressed=true]{color:var(--red2);border-color:var(--red2);background:rgba(224,37,47,.12)}
-.search{display:flex;gap:.6rem;max-width:560px}
 .search input{flex:1;min-width:0}
 .search button{flex:none;min-height:44px;padding:0 1rem;font:700 .68rem 'Cinzel',serif;letter-spacing:.14em;color:var(--gold2);background:var(--red);border:1px solid var(--gold);cursor:pointer}
 /* ===== stats + spotlight ===== */
@@ -550,7 +556,7 @@ async function shareIt(text,btn){const url=location.href.split("#")[0];
   if(btn){const o=btn.textContent;btn.textContent="LINK COPIED";setTimeout(()=>btn.textContent=o,1800)}}catch(e){}}
 const FB=(t,l)=>`<div class="fb">${l}<small>${t}</small></div>`;
 const IMG=(src,alt)=>`<img src="${String(src).trim()}" alt="${alt}" loading="lazy" decoding="async" onload="this.parentNode.querySelector('.fb').style.display='none'" onerror="this.remove()">`;
-const pic=(img,t)=>`<div class="pic">${FB("PHOTO HERE",t.split(" ").map(w=>w[0]).join(""))}${img?IMG(img,t):""}</div>`;
+const pic=(img,t)=>`<div class="pic">${FB("PHOTO HERE",(w=>w[0][0]+(w.length>1?w[w.length-1][0]:""))(t.replace(/['"]/g,"").split(" ")))}${img?IMG(img,t):""}</div>`;
 
 // characters + filters
 const FAMILIES=["Allard","Borghese","Montanari","Romanov","Winata","London"];
@@ -583,8 +589,8 @@ $("#chars").addEventListener("click",e=>{const b=e.target.closest(".fav");if(!b)
 function jump(name){const c=$("#chars"),el=[...c.children].find(x=>x.dataset&&x.dataset.n==name);if(!el)return;
  el.classList.add("in");c.scrollTo({top:el.offsetTop-12,behavior:"smooth"});el.classList.add("hl");setTimeout(()=>el.classList.remove("hl"),2200)}
 $("#rnd").onclick=()=>{const l=[...$("#chars").querySelectorAll(".card")];if(!l.length)return;jump(l[Math.floor(Math.random()*l.length)].dataset.n)};
-// stats strip (counts come from your data, so they update themselves)
-(()=>{const S=[["FAMILIES",new Set(CHARACTERS.map(c=>c.fam)).size],["CHARACTERS",CHARACTERS.length],["CITIES",CITIES.length],["SONGS",TRACKS.length]];
+// stats strip (counts come from your data, so they update themselves; London is a city, not a family)
+(()=>{const S=[["FAMILIES",new Set(CHARACTERS.map(c=>c.fam).filter(f=>f!="London")).size],["CHARACTERS",CHARACTERS.length],["CITIES",CITIES.length],["GALLERY",GALLERY.length]];
  const el=$("#stats");el.innerHTML=S.map(x=>`<div><b data-n="${x[1]}">0</b><span>${x[0]}</span></div>`).join("");
  const run=()=>el.querySelectorAll("b").forEach(b=>{const n=+b.dataset.n;if(matchMedia("(prefers-reduced-motion:reduce)").matches){b.textContent=n;return}
   let t0=null;const st=t=>{t0=t0||t;const p=Math.min((t-t0)/1100,1);b.textContent=Math.round(n*p);if(p<1)requestAnimationFrame(st)};requestAnimationFrame(st)});
@@ -619,8 +625,8 @@ const gal=$("#gal");
 const gcount=()=>{const f=[...gal.children];if(!f.length)return;const c=gal.scrollLeft+gal.clientWidth/2;let n=0;f.forEach((x,i)=>{if(x.offsetLeft<=c)n=i});
  if(gal.scrollLeft+gal.clientWidth>=gal.scrollWidth-4)n=f.length-1;$("#gc").textContent=(n+1)+" / "+f.length};
 gal.addEventListener("scroll",gcount,{passive:true});addEventListener("resize",gcount);gcount();
-$("#gl").onclick=()=>$("#gal").scrollBy({left:-340,behavior:"smooth"});
-$("#gr").onclick=()=>$("#gal").scrollBy({left:340,behavior:"smooth"});
+$("#gl").onclick=()=>gal.scrollBy({left:-340,behavior:"smooth"});
+$("#gr").onclick=()=>gal.scrollBy({left:340,behavior:"smooth"});
 
 // trailer (only if a link is set)
 (()=>{const t=$("#trailer");if(!TRAILER_URL){t.remove();return}
@@ -631,10 +637,10 @@ $("#tracks").innerHTML=TRACKS.map((t,i)=>`<a class="trk" href="https://open.spot
 $("#plCount").textContent="Series playlist \u2022 "+TRACKS.length+" songs";
 
 // nav
-const nav=$("#nav");const bg=$("#burger");
-bg.onclick=()=>bg.setAttribute("aria-expanded",nav.classList.toggle("open"));
-nav.onclick=e=>{if(e.target.tagName=="A"){nav.classList.remove("open");bg.setAttribute("aria-expanded","false")}};
+const nav=$("#nav"),bg=$("#burger");
 const closeNav=()=>{nav.classList.remove("open");bg.setAttribute("aria-expanded","false")};
+bg.onclick=()=>bg.setAttribute("aria-expanded",nav.classList.toggle("open"));
+nav.onclick=e=>{if(e.target.tagName=="A")closeNav()};
 document.addEventListener("click",e=>{if(nav.classList.contains("open")&&!e.target.closest("header"))closeNav()});
 addEventListener("keydown",e=>{if(e.key=="Escape")closeNav()});
 const links=[...nav.querySelectorAll("a")];
@@ -675,7 +681,7 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitMap);
  $("#awTxt").innerHTML=AW_TEXT.map(t=>`<p>${t}</p>`).join("");
  $("#awAva").innerHTML=`<span class="fb">${(AW_NAME[0]||"M").toUpperCase()}</span>`+(AW_IMG?IMG(AW_IMG,AW_NAME):"");
  const set=o=>{aw.classList.toggle("open",o);btn.setAttribute("aria-expanded",o)};
- window.openAW=()=>{if(!aw.classList.contains("open")){set(true);setTimeout(()=>aw.scrollIntoView({behavior:"smooth",block:"nearest"}),480)}};
+ const openAW=()=>{if(!aw.classList.contains("open")){set(true);setTimeout(()=>aw.scrollIntoView({behavior:"smooth",block:"nearest"}),480)}};
  btn.onclick=()=>{const o=!aw.classList.contains("open");set(o);if(o)setTimeout(()=>aw.scrollIntoView({behavior:"smooth",block:"nearest"}),480)};
  document.addEventListener("click",e=>{const a=e.target.closest('a[href="#afterword"]');if(a)setTimeout(openAW,350)});
  if(location.hash=="#afterword")setTimeout(openAW,300);
