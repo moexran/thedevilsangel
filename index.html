@@ -254,6 +254,33 @@ footer .btn{margin-top:.4rem}
 #lb.multi #lbp,#lb.multi #lbn{display:block}
 #lb img{touch-action:pan-y}
 @media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== characters: capped height, scrolls inside ===== */
+.cwrap{position:relative;border:1px solid var(--line);background:rgba(5,3,3,.5)}
+.cwrap:after{content:"";position:absolute;left:0;right:8px;bottom:0;height:56px;background:linear-gradient(transparent,var(--bg));pointer-events:none;transition:opacity .3s}
+.cwrap.end:after{opacity:0}
+#chars{position:relative;max-height:min(78vh,760px);max-height:min(78svh,760px);overflow-y:auto;padding:1rem;scrollbar-width:thin;scrollbar-color:var(--red) transparent;-webkit-overflow-scrolling:touch}
+#chars::-webkit-scrollbar{width:7px}#chars::-webkit-scrollbar-thumb{background:var(--red);border-radius:4px}
+#chars .card:last-child{margin-bottom:3rem}
+.cmeta{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-bottom:.7rem;font:.68rem 'Cinzel',serif;letter-spacing:.16em;color:var(--mute)}
+.card.hl{border-color:var(--gold2);box-shadow:0 0 34px rgba(243,217,139,.35)}
+.fav{position:absolute;top:.6rem;right:.6rem;width:44px;height:44px;background:rgba(5,3,3,.7);border:1px solid var(--line);color:var(--gold);font-size:1.3rem;cursor:pointer;z-index:2}
+.fav[aria-pressed=true]{color:var(--red2);border-color:var(--red2);background:rgba(224,37,47,.12)}
+.search{display:flex;gap:.6rem;max-width:560px}
+.search input{flex:1;min-width:0}
+.search button{flex:none;min-height:44px;padding:0 1rem;font:700 .68rem 'Cinzel',serif;letter-spacing:.14em;color:var(--gold2);background:var(--red);border:1px solid var(--gold);cursor:pointer}
+/* ===== stats + spotlight ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;max-width:1000px;margin:-2.2rem auto 0;position:relative;z-index:5;background:var(--line);border:1px solid var(--line)}
+.stats div{background:#0a0505;padding:1.1rem .4rem;text-align:center}
+.stats b{display:block;font:900 clamp(1.6rem,6vw,2.6rem) 'Cinzel',serif;color:var(--gold2)}
+.stats span{font:.62rem 'Cinzel',serif;letter-spacing:.2em;color:var(--mute)}
+.spot{display:flex;align-items:center;gap:1.1rem;max-width:760px;margin:2rem auto 0;padding:.9rem;border:1px solid var(--gold);border-left:4px solid var(--fc,var(--red2));background:linear-gradient(160deg,var(--panel),#080404);cursor:pointer;width:calc(100% - 10vw);text-align:left;color:inherit;font:inherit}
+.spot .ava{width:72px;height:72px;flex:none;font-size:1.6rem}
+.spot small{display:block;font:700 .6rem 'Cinzel',serif;letter-spacing:.24em;color:var(--red2)}
+.spot h3{font-size:1.2rem;color:var(--gold2)}.spot em{color:var(--mute);font-size:.95rem}
+.spot i{margin-left:auto;font-style:normal;color:var(--gold);font-size:1.4rem}
+.quiz.t{border-top-color:var(--fc);box-shadow:0 0 36px rgba(179,18,27,.2)}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr);margin-top:-1.5rem}.search{flex-wrap:wrap}.search button{flex:1}#chars{padding:.6rem}}
 </style>
 </head>
 <body>
@@ -276,6 +303,8 @@ footer .btn{margin-top:.4rem}
     <a class="btn" href="#characters">MEET THE FAMILIES</a><a class="btn ghost" href="#novel">READ THE NOVEL</a>
   </div>
 </div>
+<div class="stats rv" id="stats"></div>
+<button class="spot rv" id="spot" type="button" hidden></button>
 
 <section id="lore">
   <div class="sh rv"><h2>THE UNDERWORLD</h2><p>Five crowns. One corrupted law. No clean hands.</p></div>
@@ -386,7 +415,7 @@ footer .btn{margin-top:.4rem}
     <div class="plh"><div class="cov">&#9830;</div><div><h3>The Devil's Angel</h3><p id="plCount">Series playlist</p></div></div>
     <div id="tracks"></div>
     <p class="hint">Tap a song to find it on Spotify.</p>
-    <div class="plbtn"><a class="btn" href="https://open.spotify.com/playlist/3BMl5N6StFpukzQbiK4u2l?si=c6a83ac39b14436a" target="_blank" rel="noopener">LISTEN ON SPOTIFY</a></div>
+    <div class="plbtn"><a class="btn" href="https://open.spotify.com/playlist/3BMl5N6StFpukzQbiK4u2l?si=c6a83ac39b14436a" target="_blank" rel="noopener">SPOTIFY PLAYLIST</a></div>
   </div>
 </section>
 
@@ -398,8 +427,9 @@ footer .btn{margin-top:.4rem}
 <section id="characters">
   <div class="sh rv"><h2>THE CHARACTERS</h2><p>Tap a family to filter. Chat with them in Janitor.AI.</p></div>
   <div class="filters" id="filters"></div>
-  <div class="search"><input id="q" type="search" placeholder="Search by name, role or trait..." aria-label="Search characters" autocomplete="off"></div>
-  <div id="chars"></div>
+  <div class="search"><input id="q" type="search" placeholder="Search by name, role or trait..." aria-label="Search characters" autocomplete="off"><button id="rnd" type="button">SURPRISE ME</button></div>
+  <div class="cmeta"><span id="cc"></span><span>SCROLL &#8595;</span></div>
+  <div class="cwrap" id="cw"><div id="chars" tabindex="0" aria-label="Characters list, scrollable"></div></div>
 </section>
 
 <section id="afterword">
@@ -528,19 +558,42 @@ const fams=["All",...new Set([...FAMILIES,...CHARACTERS.map(c=>c.fam)])];
 const cnt=f=>f=="All"?CHARACTERS.length:CHARACTERS.filter(c=>c.fam==f).length;
 $("#filters").innerHTML=fams.map((f,i)=>`<button class="${i?"":"on"}" data-f="${f}"${FC[f]?` style="--fc:${FC[f]}"`:""}>${f.toUpperCase()}<em>${cnt(f)}</em></button>`).join("");
 let curF="All",curQ="";
+let FAV=[];try{FAV=JSON.parse(localStorage.getItem("tda-fav")||"[]")}catch(e){}
+const saveFav=()=>{try{localStorage.setItem("tda-fav",JSON.stringify(FAV))}catch(e){}};
+$("#filters").insertAdjacentHTML("beforeend",`<button data-f="__fav">&#9733; FAVORITES<em id="fc">${FAV.length}</em></button>`);
 function drawChars(f,q=""){
  const k=q.trim().toLowerCase();
- const list=CHARACTERS.filter(c=>(f=="All"||c.fam==f)&&(!k||[c.name,c.role,c.fam,...c.tags].join(" ").toLowerCase().includes(k)));
- if(!list.length){$("#chars").innerHTML=`<p class="warn" style="text-align:center">${k?"No characters match that search.":"The "+f+" family's characters are coming soon."}</p>`;return}
+ const list=CHARACTERS.filter(c=>(f=="All"||(f=="__fav"?FAV.includes(c.name):c.fam==f))&&(!k||[c.name,c.role,c.fam,...c.tags].join(" ").toLowerCase().includes(k)));
+ if(!list.length){$("#chars").innerHTML=`<p class="warn" style="text-align:center">${k?"No characters match that search.":(f=="__fav"?"Tap the heart on a character to save them here.":"The "+f+" family's characters are coming soon.")}</p>`;$("#cc").textContent="0 CHARACTERS";return}
  $("#chars").innerHTML=list.map(c=>`
- <article class="card ch rv" style="--fc:${FC[c.fam]||"var(--gold)"}">${pic(c.img,c.name)}<div class="info"><h3>${c.name}</h3><div class="role">${c.role}</div>
+ <article class="card ch rv" data-n="${c.name}" style="--fc:${FC[c.fam]||"var(--gold)"}"><button class="fav" type="button" aria-pressed="${FAV.includes(c.name)}" aria-label="Save ${c.name} to favorites">${FAV.includes(c.name)?"\u2665":"\u2661"}</button>${pic(c.img,c.name)}<div class="info"><h3>${c.name}</h3><div class="role">${c.role}</div>
  <div class="tags">${c.tags.map((t,i)=>`<span class="tag ${i%3==2?"r":""}">${t}</span>`).join("")}</div>
  <div class="scroll">${P(c.desc)}</div>${c.link&&c.link!="#"?`<a class="btn" href="${c.link}" target="_blank" rel="noopener">CHAT WITH ${c.name.split(" ")[0].toUpperCase()}</a>`:`<span class="btn off" aria-disabled="true">COMING SOON</span>`}</div></article>`).join("");
- post();
+ $("#cc").textContent=list.length+(list.length==1?" CHARACTER":" CHARACTERS");$("#chars").scrollTop=0;post();cend();
 }
+const cend=()=>{const c=$("#chars");$("#cw").classList.toggle("end",c.scrollTop+c.clientHeight>=c.scrollHeight-6)};
+$("#chars").addEventListener("scroll",cend,{passive:true});addEventListener("resize",cend);
 drawChars("All");
 $("#filters").onclick=e=>{const b=e.target.closest("button");if(!b)return;
  document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x==b));curF=b.dataset.f;drawChars(curF,curQ)};
+$("#chars").addEventListener("click",e=>{const b=e.target.closest(".fav");if(!b)return;
+ const n=b.closest(".card").dataset.n,on=!FAV.includes(n);FAV=on?[...FAV,n]:FAV.filter(x=>x!=n);saveFav();
+ b.setAttribute("aria-pressed",on);b.textContent=on?"\u2665":"\u2661";$("#fc").textContent=FAV.length;
+ if(!on&&curF=="__fav")drawChars(curF,curQ)});
+function jump(name){const c=$("#chars"),el=[...c.children].find(x=>x.dataset&&x.dataset.n==name);if(!el)return;
+ el.classList.add("in");c.scrollTo({top:el.offsetTop-12,behavior:"smooth"});el.classList.add("hl");setTimeout(()=>el.classList.remove("hl"),2200)}
+$("#rnd").onclick=()=>{const l=[...$("#chars").querySelectorAll(".card")];if(!l.length)return;jump(l[Math.floor(Math.random()*l.length)].dataset.n)};
+// stats strip (counts come from your data, so they update themselves)
+(()=>{const S=[["FAMILIES",new Set(CHARACTERS.map(c=>c.fam)).size],["CHARACTERS",CHARACTERS.length],["CITIES",CITIES.length],["SONGS",TRACKS.length]];
+ const el=$("#stats");el.innerHTML=S.map(x=>`<div><b data-n="${x[1]}">0</b><span>${x[0]}</span></div>`).join("");
+ const run=()=>el.querySelectorAll("b").forEach(b=>{const n=+b.dataset.n;if(matchMedia("(prefers-reduced-motion:reduce)").matches){b.textContent=n;return}
+  let t0=null;const st=t=>{t0=t0||t;const p=Math.min((t-t0)/1100,1);b.textContent=Math.round(n*p);if(p<1)requestAnimationFrame(st)};requestAnimationFrame(st)});
+ if("IntersectionObserver" in window){const o=new IntersectionObserver(e=>{if(e[0].isIntersecting){run();o.disconnect()}});o.observe(el)}else run();
+ // spotlight: one character per day
+ const d=Math.floor(Date.now()/864e5),c=CHARACTERS[d%CHARACTERS.length],sp=$("#spot");
+ sp.hidden=false;sp.style.setProperty("--fc",FC[c.fam]||"var(--gold)");
+ sp.innerHTML=`<div class="ava"><span class="fb">${c.name[0]}</span>${c.img?IMG(c.img,c.name):""}</div><div><small>TODAY'S SPOTLIGHT</small><h3>${c.name}</h3><em>${c.role}</em></div><i>&#10095;</i>`;
+ sp.onclick=()=>{const b=document.querySelector('#filters button[data-f="All"]');if(b)b.click();$("#q").value="";curQ="";drawChars("All");$("#characters").scrollIntoView({behavior:"smooth"});setTimeout(()=>jump(c.name),500)}})();
 $("#q").oninput=e=>{curQ=e.target.value;drawChars(curF,curQ)};
 
 // map
@@ -670,8 +723,8 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitMap);
    shareTxt=`I got "${r[0]}" on the Which Family Are You? quiz. The Devil's Angel`;
    const bars=rows.map(([f,n])=>`<div class="rb"><span>${f.toUpperCase()}</span><div><i style="--w:${n/Q.length*100}%;background:${FC[f]}"></i></div><em>${Math.round(n/Q.length*100)}%</em></div>`).join("");
    box.innerHTML=`<div class="res"><div class="c2">YOUR FAMILY</div><h3 tabindex="-1" id="qh">${r[0]}</h3><p>${r[1]}</p><div class="rbs">${bars}</div><button class="btn" data-meet="${top}">MEET THEIR CHARACTERS</button><button class="btn ghost" data-retry="1">RETAKE</button>${canShare?`<button class="btn ghost" data-share="1">SHARE RESULT</button>`:""}</div>`;
-   $("#qh").focus({preventScroll:true});return}
-  const q=Q[i];
+   box.classList.add("t");box.style.setProperty("--fc",FC[top]);$("#qh").focus({preventScroll:true});return}
+  box.classList.remove("t");const q=Q[i];
   box.innerHTML=`<div class="qn">QUESTION ${i+1} / ${Q.length}</div><div class="qbar"><div style="width:${i/Q.length*100}%"></div></div><h3 tabindex="-1" id="qh">${q.q}</h3>`+q.o.map((o,j)=>`<button class="qopt" data-f="${o[1]}">${o[0]}</button>`).join("");
   if(i)$("#qh").focus({preventScroll:true})}
  box.onclick=e=>{
