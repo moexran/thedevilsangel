@@ -57,9 +57,8 @@ h2{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--gold);letter-spacing:.1em}
 .box:before{top:6px;left:6px;border-right:0;border-bottom:0}.box:after{bottom:6px;right:6px;border-left:0;border-top:0}
 .box h3{color:var(--gold2);font-size:1.1rem;letter-spacing:.1em;margin-bottom:.6rem}
 .box p{color:var(--text);opacity:.9}
-.box.main{margin-bottom:1.4rem;padding:2.6rem 2.8rem}
 /* gold "World" box: deep antique gold so it stands apart from the red family boxes */
-.box.main{border:1px solid rgba(176,138,50,.55);border-top:4px solid var(--gd);border-image:linear-gradient(90deg,#6e5016,var(--gd2),#6e5016) 1;background:radial-gradient(ellipse at top,rgba(176,138,50,.16),transparent 65%),linear-gradient(160deg,#1c1507,#0b0804);box-shadow:0 0 34px rgba(176,138,50,.16),inset 0 0 40px rgba(176,138,50,.05)}
+.box.main{margin-bottom:1.4rem;padding:2.6rem 2.8rem;border:1px solid rgba(176,138,50,.55);border-top:4px solid var(--gd);border-image:linear-gradient(90deg,#6e5016,var(--gd2),#6e5016) 1;background:radial-gradient(ellipse at top,rgba(176,138,50,.16),transparent 65%),linear-gradient(160deg,#1c1507,#0b0804);box-shadow:0 0 34px rgba(176,138,50,.16),inset 0 0 40px rgba(176,138,50,.05)}
 .box.main:before,.box.main:after{width:20px;height:20px;border-color:var(--gd2)}
 .box.main:before{top:8px;left:8px}.box.main:after{bottom:8px;right:8px}
 .box.main h3{color:var(--gd2);text-shadow:0 0 18px rgba(176,138,50,.35);text-align:center;letter-spacing:.14em;font-size:1.6rem;margin-bottom:1rem}
@@ -156,7 +155,7 @@ footer p{color:var(--mute);font-size:.95rem;margin-top:.7rem}
 .btn.off{opacity:.45;border-style:dashed;cursor:default;pointer-events:none}
 /* character search */
 .search{display:flex;gap:.6rem;max-width:560px;margin:0 auto 2rem}
-.search input{width:100%;padding:.75rem 1rem;font:1rem 'Cormorant Garamond',serif;color:var(--text);background:#0c0606;border:1px solid var(--line);border-radius:0;-webkit-appearance:none;appearance:none}
+.search input{padding:.75rem 1rem;font:1rem 'Cormorant Garamond',serif;color:var(--text);background:#0c0606;border:1px solid var(--line);border-radius:0;-webkit-appearance:none;appearance:none}
 .search input::placeholder{color:var(--mute);font-style:italic}
 .search input:focus{outline:2px solid var(--gold);outline-offset:2px}
 .filters button em{font-style:normal;opacity:.65;margin-left:.35em}
@@ -192,7 +191,7 @@ nav{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;backgr
 nav.open{display:flex}nav a{padding:1rem 6vw}
 }
 /* trailer */
-.trailer{margin-top:2.2rem;text-align:center}
+.trailer{width:calc(100% - 10vw);max-width:900px;margin:2.4rem auto 0;text-align:center}
 .trailer h3{font-size:1rem;letter-spacing:.3em;color:var(--gold2);margin-bottom:1rem}
 .trailer video{display:block;width:100%;max-width:900px;margin:0 auto;aspect-ratio:16/9;background:#000;border:1px solid var(--gold);box-shadow:0 0 40px rgba(179,18,27,.35)}
 /* lightbox */
@@ -286,7 +285,7 @@ footer .btn{margin-top:.4rem}
 .spot h3{font-size:1.2rem;color:var(--gold2)}.spot em{color:var(--mute);font-size:.95rem}
 .spot i{margin-left:auto;font-style:normal;color:var(--gold);font-size:1.4rem}
 .quiz.t{border-top-color:var(--fc);box-shadow:0 0 36px rgba(179,18,27,.2)}
-@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr);margin-top:-1.5rem}.search{flex-wrap:wrap}.search button{flex:1}#chars{padding:.6rem}}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr);margin-top:-1.5rem}.search{flex-wrap:wrap}.search input,.search button{flex:1 1 100%}#chars{padding:.6rem}}
 </style>
 </head>
 <body>
@@ -311,6 +310,7 @@ footer .btn{margin-top:.4rem}
 </div>
 <div class="stats rv" id="stats"></div>
 <button class="spot rv" id="spot" type="button" hidden></button>
+<div class="trailer rv" id="trailer"></div>
 
 <section id="lore">
   <div class="sh rv"><h2>THE UNDERWORLD</h2><p>Five crowns. One corrupted law. No clean hands.</p></div>
@@ -412,7 +412,6 @@ footer .btn{margin-top:.4rem}
   <div class="sh rv"><h2>THE GALLERY</h2><p><i>Scroll sideways.</i></p></div>
   <div class="gal" id="gal"></div>
   <div class="galnav"><button class="btn" id="gl" aria-label="Previous">&#10094;</button><span class="galcount" id="gc"></span><button class="btn" id="gr" aria-label="Next">&#10095;</button></div>
-  <div class="trailer rv" id="trailer"></div>
 </section>
 
 <section id="playlist">
@@ -599,7 +598,7 @@ $("#rnd").onclick=()=>{const l=[...$("#chars").querySelectorAll(".card")];if(!l.
  const d=Math.floor(Date.now()/864e5),c=CHARACTERS[d%CHARACTERS.length],sp=$("#spot");
  sp.hidden=false;sp.style.setProperty("--fc",FC[c.fam]||"var(--gold)");
  sp.innerHTML=`<div class="ava"><span class="fb">${c.name[0]}</span>${c.img?IMG(c.img,c.name):""}</div><div><small>TODAY'S SPOTLIGHT</small><h3>${c.name}</h3><em>${c.role}</em></div><i>&#10095;</i>`;
- sp.onclick=()=>{const b=document.querySelector('#filters button[data-f="All"]');if(b)b.click();$("#q").value="";curQ="";drawChars("All");$("#characters").scrollIntoView({behavior:"smooth"});setTimeout(()=>jump(c.name),500)}})();
+ sp.onclick=()=>{$("#q").value="";curQ="";const b=document.querySelector('#filters button[data-f="All"]');if(b)b.click();$("#characters").scrollIntoView({behavior:"smooth"});setTimeout(()=>jump(c.name),500)}})();
 $("#q").oninput=e=>{curQ=e.target.value;drawChars(curF,curQ)};
 
 // map
@@ -738,7 +737,7 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitMap);
   if(o){sc[o.dataset.f]=(sc[o.dataset.f]||0)+1;i++;show()}
   else if(r){i=0;sc={};show()}
   else if(sh)shareIt(shareTxt,sh)
-  else if(m){const b=document.querySelector(`#filters button[data-f="${m.dataset.meet}"]`);if(b)b.click();$("#characters").scrollIntoView({behavior:"smooth"})}};
+  else if(m){$("#q").value="";curQ="";const b=document.querySelector(`#filters button[data-f="${m.dataset.meet}"]`);if(b)b.click();$("#characters").scrollIntoView({behavior:"smooth"})}};
  show();
 })();
 
